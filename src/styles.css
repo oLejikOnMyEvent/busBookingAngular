@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+.example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .refreshButton{
+    padding-right: 50px;
+  } 
+  .CardSearch{
+    margin-top: 50px;
+    margin-left: 80px;
+    margin-right: 80px;
+  }
+
+  .BusFlightCard{
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+  }

@@ -1,0 +1,40 @@
+<mat-card class="BusFlightCard">
+
+  <h4 style="display: flex; justify-content: center" >Номер рейса 1 </h4>
+    <mat-grid-list cols="6" rowHeight="2:1">
+<h1 style="display: flex; justify-content: center">  Москва  --- Махачкала </h1>
+ 
+
+</mat-grid-list>
+
+<div style="display: flex; justify-content: center">  <h4> 07:00 - 05:34</h4> </div>
+  <span  style="display: flex; justify-content: center"> время в пути</span>
+
+  <mat-grid-list cols="8" rowHeight="2:1">
+    <mat-grid-tile colspan='4'>  <h4>
+   01.01.2019
+     </h4>
+     
+     </mat-grid-tile>
+    
+    
+     <mat-grid-tile colspan='4'>  <h4> 02.01.2019 </h4></mat-grid-tile>
+
+  </mat-grid-list>
+
+ 
+
+  <mat-grid-list cols="8" rowHeight="3:1" >
+      <mat-grid-tile colspan='4'>  <span>
+    отправление
+      </span>
+       </mat-grid-tile>
+      
+      
+       <mat-grid-tile colspan='4'>  <span> прибытие </span></mat-grid-tile>
+  
+    </mat-grid-list>
+
+    <button mat-raised-button color="primary">Купить за 1500</button>
+    <a mat-raised-button routerLink="/seats">Buy test</a>
+</mat-card>
