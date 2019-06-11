@@ -4,10 +4,16 @@ import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { BusSearchService } from '../bus-search.service'
+import { isNgTemplate } from '@angular/compiler';
 
 export interface User {
   name: string;
+  
 }
+let stationArray;
+
+
+
 
 
 @Component({
@@ -16,15 +22,31 @@ export interface User {
   styleUrls: ['./search-bus.component.css']
 })
 export class SearchBusComponent implements OnInit {
-  constructor(private BusSearchService: BusSearchService){}
 
+
+
+      
+
+  
+
+  constructor(private BusSearchService: BusSearchService){}
+ 
+ 
 
 
   myControl = new FormControl();
-  options: string[] = ["москва","махачкала", "воронеж"];
+  options: string[] = stationArray;
   filteredOptions: Observable<string[]>;
 
   ngOnInit() {
+   stationArray =  this.BusSearchService.getServers()
+          .subscribe(
+            (response)=> console.log(response), 
+            (error)=> console.log(error),  
+          );
+            
+     stationArray = JSON.stringify(stationArray.map(item =>item.title));
+
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))

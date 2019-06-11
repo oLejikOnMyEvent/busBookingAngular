@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { BusSearchService } from './bus-search.service';
 import { Observable } from 'rxjs';
@@ -14,21 +14,17 @@ import { logging } from 'protractor';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
    
     constructor( private BusSearchService : BusSearchService){}
 
 
-    onGet(){ 
-        this.BusSearchService.getServers()
-          .subscribe(
-            (response)=> console.log(response), 
-            (error)=> console.log(error),  
+    ngOnInit(){
         
-          );
-            
 
     
     }
+
+    
    
   }
