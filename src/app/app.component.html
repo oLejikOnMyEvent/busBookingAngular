@@ -8,21 +8,23 @@
         <mat-toolbar color="primary">
         
           <mat-toolbar-row>
-              <a mat-raised-button routerLink="history-list">History</a>
-              <a mat-raised-button routerLink="buyticket-list" style="margin-left: 10px">Buying tickts</a>
+              <a *ngIf="loginService.isUserLoggedIn()" mat-raised-button routerLink="history-list">History</a>
+              <a  *ngIf="loginService.isUserLoggedIn()" mat-raised-button routerLink="buyticket-list" style="margin-left: 10px">Buying tickts</a>
+              <a   mat-raised-button routerLink="schedule" style="margin-left: 10px" >Schedule</a>
             
            
             <span class="example-spacer"></span>
 
-            <a mat-raised-button routerLink="signup">Registration </a>
+            <a  mat-raised-button routerLink="signup">Registration </a>
             <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon" style="margin-right: 20px">verified_user</mat-icon> -->
-            <a mat-raised-button routerLink="signin" style="margin-left: 10px">Sign in</a>
+            <a  *ngIf="!loginService.isUserLoggedIn()" mat-raised-button routerLink="signin" style="margin-left: 10px">Sign in</a>
+            <a  *ngIf="loginService.isUserLoggedIn()" mat-raised-button routerLink="logout" style="margin-left: 10px">Log out</a>
           </mat-toolbar-row>
        
         </mat-toolbar>
      
-
-        <button (click)="onGet()"> get data </button>
+        <!-- *ngIf="!authService.isUserLoggedIn()" -->
+        <!-- <button (click)="onGet()"> get data </button> -->
         <!-- <button (click)="onMapping()"> check</button> -->
     
         <!-- <app-bus-flight class="BusFlightCard"></app-bus-flight> -->

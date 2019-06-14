@@ -37,7 +37,10 @@ import { BusSearchService } from './bus-search.service';
 import { SingupComponent } from './auth/singup/singup.component';
 import { SinginComponent } from './auth/singin/singin.component';
 import { SeatsComponent } from './seats/seats.component';
-import { CheckoutComponent } from './checkout/checkout.component'
+import { CheckoutComponent } from './checkout/checkout.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { LogoutComponent } from './auth/logout/logout.component'
+
 
 
 
@@ -59,6 +62,8 @@ import { CheckoutComponent } from './checkout/checkout.component'
     SinginComponent,
     SeatsComponent,
     CheckoutComponent,
+    ScheduleComponent,
+    LogoutComponent,
   
  
   ],

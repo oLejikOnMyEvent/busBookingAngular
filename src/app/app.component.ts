@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { logging } from 'protractor';
-
+import { AuthService } from './auth/auth.service';
 
 
 
@@ -16,7 +16,8 @@ import { logging } from 'protractor';
 })
 export class AppComponent implements OnInit {
    
-    constructor( private BusSearchService : BusSearchService){}
+    constructor( private BusSearchService : BusSearchService,
+      private loginService: AuthService){}
 
 
     ngOnInit(){

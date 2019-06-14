@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+
 
 @Component({
   selector: 'app-singin',
@@ -8,7 +11,10 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class SinginComponent implements OnInit {
 
-
+  username = "1@mail.ru"
+  password 
+  invalidLogin = false;
+  
   email = new FormControl('', [Validators.required, Validators.email]);
 
   getErrorMessage() {
@@ -18,9 +24,22 @@ export class SinginComponent implements OnInit {
   }
 
   hide = true;
-  constructor() { }
+
+
+  constructor(private router: Router,
+    private loginservice: AuthService
+    ) { }
 
   ngOnInit() {
+  }
+
+
+  checkLogin(){
+    if(this.loginservice.auth(this.username, this.password)){
+        this.router.navigate(['buyticket-list'])
+        this.invalidLogin = false
+    } else 
+      this.invalidLogin = true
   }
 
 }

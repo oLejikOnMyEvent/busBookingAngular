@@ -7,14 +7,19 @@ import {  SinginComponent } from './auth/singin/singin.component';
 import { from } from 'rxjs';
 import { SeatsComponent } from './seats/seats.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { LogoutComponent } from './auth/logout/logout.component';
+import { AuthGuardService } from './auth/auth-guard.service';
 
 const routes: Routes = [
-  {path: 'history-list', component: HistoryListComponent },
-  {path: 'buyticket-list', component: BuyticketListComponent },
-  {path: 'signup', component: SingupComponent },
+  {path: 'history-list', component: HistoryListComponent, canActivate: [AuthGuardService] },
+  {path: 'buyticket-list', component: BuyticketListComponent, canActivate: [AuthGuardService] },
+  {path: 'signup', component: SingupComponent},
   {path: 'signin', component: SinginComponent},
-  {path: 'seats', component: SeatsComponent},
-  {path: 'checkout', component: CheckoutComponent}
+  {path: 'seats', component: SeatsComponent, canActivate: [AuthGuardService] },
+  {path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService] },
+  {path: 'schedule', component: ScheduleComponent },
+  {path: 'logout', component: LogoutComponent  },
   
 ];
 

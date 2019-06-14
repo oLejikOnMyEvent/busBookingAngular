@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { BusSearchService } from '../bus-search.service';
+
+
+
+
 
 export interface User {
   name: string;
@@ -12,35 +17,39 @@ export interface User {
   templateUrl: './search-bus-to.component.html',
   styleUrls: ['./search-bus-to.component.css']
 })
+
+
+
+
+
 export class SearchBusToComponent implements OnInit {
 
+  constructor(private BusSearchService: BusSearchService){}
+
+  
   myControl = new FormControl();
-  options: User[] = [
-    {name: 'Москва'},
-    {name: 'Махачкала'},
-    {name: 'Воронеж'},
-    {name: 'Ростов-на-дону'}
-  ];
-  filteredOptions: Observable<User[]>;
+  options: string[];
+  filteredOptions: Observable<string[]>;
+  
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => typeof value === 'string' ? value : value.name),
-        map(name => name ? this._filter(name) : this.options.slice())
-      );
-  }
+    this.BusSearchService.getServers()
+    .subscribe(
+      (response) => {
+        this.options = response.map(item => item.title);
 
-  displayFn(user?: User): string | undefined {
-    return user ? user.name : undefined;
-  }
+        this.filteredOptions = this.myControl.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter(value))
+        );
+      },
+      (error) => console.log(error)
+    );
+}
 
-  private _filter(name: string): User[] {
-    const filterValue = name.toLowerCase();
+private _filter(value: string): string[] {
+  const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
-  }
-
-
+  return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+}
 }

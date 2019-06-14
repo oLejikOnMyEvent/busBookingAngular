@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
- 
+import { RegistrService } from './registr.service'; 
+
+
 @Component({
   selector: 'app-singup',
   templateUrl: './singup.component.html',
@@ -9,19 +11,19 @@ import {ErrorStateMatcher} from '@angular/material/core';
 })
 export class SingupComponent implements OnInit {
 
- 
+ login: string = " ";
+ password: string =" ";
+ fullname: string = ""
 
-  constructor() { }
+  constructor(private regist:RegistrService ) { }
 
   ngOnInit() {
    
 
   }
+  AddNewUser(){
 
-  onSignup( form: NgForm ){
-    const email = form.value.email;
-    const password = form.value.password;
-    const name = form.value.name;
   }
+
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -15,11 +15,13 @@ export class BusSearchService {
 
 
   getServers(){
-  return this.http.get(this.stationUrl)
+    // return of([{ id: 1, title: 'Москва' }, { id: 2, title: 'Махачкала' }]);
+    return this.http.get<{ title: string; id: number; }[]>(this.stationUrl);
   }
 
 
-
-
+  getDate(){
+    
+  }
 }
 

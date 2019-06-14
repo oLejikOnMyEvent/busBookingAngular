@@ -1,19 +1,21 @@
 
 
 
-<form class="example-form " (ngSubmit) ="onSignup(f)" #f="ngForm">
+ <form class="example-form " (ngSubmit) ="AddNewUser()"> 
  
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="email" value="" id="mail">
+    <input matInput placeholder="login" value="" id="login" ([ngModel])="login"> 
   </mat-form-field>
 
 
 
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="password" value="" id="password">
+    <input matInput placeholder="password" value="" id="password" ([ngModel])="password">
   </mat-form-field>
   <mat-form-field class="example-full-width">
-      <input matInput placeholder="name" value="" id="name">
+      <input matInput placeholder="Full name" value="" id="name" ([ngModel])="fullname">
     </mat-form-field>
-  <button mat-raised-button color="primary">Sign up</button>
+  <button mat-raised-button color="primary" (click)="AddNewUser()"> Sign up </button>
 </form>
+
+<!-- -->

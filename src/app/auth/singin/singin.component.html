@@ -1,8 +1,8 @@
-
+<!-- 
 <form style="margin-left: 10px">
 <div class="example-container">
     <mat-form-field>
-      <input matInput placeholder="Enter your email" [formControl]="email" required>
+      <input matInput placeholder="Enter your email" [formControl]="email" required [(ngModel)]="username"> 
       <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
   </div>
@@ -10,13 +10,20 @@
 
   <mat-form-field>
       <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" [(ngModel)]="password">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
 
 
 
-</form >
-<button mat-raised-button color="primary" style="margin-left: 10px"> login </button>
+</form > -->
+
+
+<div style="margin-bottom: 30px" >
+  User Name : <input type="text" name="username" [(ngModel)]="username">
+  Password : <input type="password" name="password" [(ngModel)]="password">
+</div>
+
+<button mat-raised-button color="primary" style="margin-left: 10px" (click)="checkLogin()"> login </button>
 <a href="http://localhost:4200/auth" class="btn btn-info">admin login</a>
