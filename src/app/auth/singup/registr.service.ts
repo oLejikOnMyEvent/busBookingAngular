@@ -10,7 +10,13 @@ export class RegistrService {
     regUrl = "http://192.168.2.11:8080/registration";
   constructor(private http: HttpClient  ) { }
 
-      PostRegistrData(){
-          
-      }
+  addUser(login:string, password:string, fullname: string){
+          let data ={
+            login: login,
+            password: password,
+            fullname: fullname
+          }
+    
+   return this.http.post(this.regUrl, data)
+        }
 }

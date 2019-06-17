@@ -8,9 +8,6 @@ import { BusSearchService } from '../bus-search.service';
 
 
 
-export interface User {
-  name: string;
-}
 
 @Component({
   selector: 'app-search-bus-to',
@@ -30,7 +27,7 @@ export class SearchBusToComponent implements OnInit {
   myControl = new FormControl();
   options: string[];
   filteredOptions: Observable<string[]>;
-  
+  cityTo: string[];
 
   ngOnInit() {
     this.BusSearchService.getServers()
@@ -50,6 +47,13 @@ export class SearchBusToComponent implements OnInit {
 private _filter(value: string): string[] {
   const filterValue = value.toLowerCase();
 
-  return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+ this.cityTo = this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+
+ console.log(this.cityTo.toString());
+ 
+
+
+
+  return this.cityTo;
 }
 }

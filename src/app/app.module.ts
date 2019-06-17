@@ -30,7 +30,6 @@ import { SearchBusToComponent } from './search-bus-to/search-bus-to.component';
 import { BusFlightComponent } from './bus-flight/bus-flight.component';
 import { BusHistoryComponent } from './bus-history/bus-history.component';
 import { BusSeatsComponent } from './bus-seats/bus-seats.component';
-import { BusBuyingWindowComponent } from './bus-buying-window/bus-buying-window.component';
 import { HistoryPageComponent } from './history-page/history-page.component';
 
 import { BusSearchService } from './bus-search.service';
@@ -56,7 +55,7 @@ import { LogoutComponent } from './auth/logout/logout.component'
     BusFlightComponent,
     BusHistoryComponent,
     BusSeatsComponent,
-    BusBuyingWindowComponent,
+    
     HistoryPageComponent,
     SingupComponent,
     SinginComponent,

@@ -1,0 +1,45 @@
+{
+    "posts": [
+      { "id": 1, "title": "json-server", "author": "typicode" }
+    ],
+    "comments": [
+      { "id": 1, "body": "some comment", "postId": 1 }
+    ],
+    "profile": { "name": "typicode" },
+    "flight": [
+        {
+            "id": 14,
+        
+            "busFrom": "Москва",
+        
+        
+            "busTo": "Махачкала",
+        
+        
+            "timeStart": "07:00",
+        
+        
+            "timeEnd": "05: 25",
+        
+        
+            "dateStart": "01.01.19",
+        
+    
+            "dateEnd": "02.01.2019",
+        
+
+            "ticketPrice": 1500
+        }
+    ],
+    "routeFlight":[
+    {
+        "id": 1, "title": "Moscow"
+    },
+    {
+        "id":2, "title": "Makhachkala"
+    },
+    {
+        "id":3, "title": "Rostov"
+    }
+    ]
+  }

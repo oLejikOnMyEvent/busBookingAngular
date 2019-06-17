@@ -13,7 +13,7 @@ export class SingupComponent implements OnInit {
 
  login: string = " ";
  password: string =" ";
- fullname: string = ""
+ fullname: string = " ";
 
   constructor(private regist:RegistrService ) { }
 
@@ -22,8 +22,12 @@ export class SingupComponent implements OnInit {
 
   }
   AddNewUser(){
-
-  }
+      this.regist.addUser(this.login, this.password, this.fullname)
+      .subscribe((json)=> {console.log(json) });
+      this.login = "";
+      this.password = "";
+      this.fullname ="";
+    }
 
 
 }

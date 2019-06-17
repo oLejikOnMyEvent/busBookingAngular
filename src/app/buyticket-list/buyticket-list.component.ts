@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { BuyTicketListService } from './buy-ticket-list.service';
 
 @Component({
   selector: 'app-buyticket-list',
   template: `
-     
+  <form #form="ngForm">
   <mat-card class="CardSearch">
 
 
@@ -15,29 +16,43 @@ import { Component, OnInit } from '@angular/core';
       <mat-grid-tile>   <app-search-bus-to></app-search-bus-to>
       </mat-grid-tile>
       <mat-grid-tile>  <app-datapicker></app-datapicker>
-        <button mat-flat-button color="primary" class="ShowButton" (click)="(showFlight())">Показать</button>
+        <button mat-flat-button color="primary" class="ShowButton" (click)="(showFlight()); (showData())">Показать</button>
       </mat-grid-tile>
      
     </mat-grid-list>
     
   </mat-card>
+  </form>
 
   <app-bus-flight *ngIf="show"> </app-bus-flight>
   <app-bus-flight *ngIf="show"> </app-bus-flight>
+  
 `,
   styles: ['./buyticket-list.component.css']
 })
 export class BuyticketListComponent implements OnInit {
 
+
+  cityTo: string;
+  cityFrom: string;
+  date: any;
  show = false;
-  constructor() { }
+
+  constructor(private BuyTicketListService: BuyTicketListService) { }
 
 
   showFlight(){
-    this.show = !this.show;
+    this.show = true;
   }
 
-
+showData(){
+  console.log(this.cityTo);
+  console.log(this.cityFrom);
+  console.log(this.date);
+  
+  
+  
+}
   ngOnInit() {
 
 

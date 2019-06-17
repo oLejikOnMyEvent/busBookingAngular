@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -6,10 +6,6 @@ import { HttpClient } from '@angular/common/http';
 import { BusSearchService } from '../bus-search.service'
 import { isNgTemplate } from '@angular/compiler';
 
-export interface User {
-  name: string;
-
-}
 
 
 
@@ -23,6 +19,7 @@ export interface User {
 })
 export class SearchBusComponent implements OnInit {
   
+ 
   constructor(private BusSearchService: BusSearchService) {
     
   }
@@ -30,6 +27,7 @@ export class SearchBusComponent implements OnInit {
   myControl = new FormControl();
   options: string[];
   filteredOptions: Observable<string[]>;
+  cityFrom: string[];
 
   ngOnInit() {
    this.BusSearchService.getServers()
@@ -44,11 +42,20 @@ export class SearchBusComponent implements OnInit {
         },
         (error) => console.log(error)
       );
+      
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+     this.cityFrom = this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0); 
+        
+      
+console.log(this.cityFrom.toString());
+     
+ return this.cityFrom;
+   
   }
+
+
 }
