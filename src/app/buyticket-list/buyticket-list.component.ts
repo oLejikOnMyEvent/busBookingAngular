@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { BuyTicketListService } from './buy-ticket-list.service';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-buyticket-list',
   template: `
-  <form #form="ngForm">
+  <form (ngSubmit)="submitForm()" #form="ngForm">
   <mat-card class="CardSearch">
-
+git 
 
   <mat-grid-list cols="4" rowHeight="2:1">
       <mat-grid-tile>     <app-search-bus> </app-search-bus> 
@@ -17,6 +18,7 @@ import { BuyTicketListService } from './buy-ticket-list.service';
       </mat-grid-tile>
       <mat-grid-tile>  <app-datapicker></app-datapicker>
         <button mat-flat-button color="primary" class="ShowButton" (click)="(showFlight()); (showData())">Показать</button>
+        <button mat-flat-button color="warn" class="checkButton" style="margin-left:20px;" type="submit"> Check </button>
       </mat-grid-tile>
      
     </mat-grid-list>
@@ -52,6 +54,13 @@ showData(){
   
   
   
+}
+
+
+submitForm(form: HTMLFormElement){
+console.log("form submited", from);
+
+
 }
   ngOnInit() {
 
