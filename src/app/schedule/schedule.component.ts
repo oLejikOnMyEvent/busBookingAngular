@@ -12,10 +12,10 @@ export interface PeriodicElement {
 
 
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { id: 1, flightFrom: 'Кольчугино', flightTo: 'Дубна', Time: '07: 00', Date: '01.01.2018', Price: 1500 }
-
-];
+// const ELEMENT_DATA: PeriodicElement[] = [
+//   // { id: 1, flightFrom: 'Кольчугино', flightTo: 'Дубна', Time: '07: 00', Date: '01.01.2018', Price: 1500 }
+ 
+// ];
 
 
 
@@ -29,15 +29,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class ScheduleComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'flightFrom', 'flightTo', 'Time', 'Date', 'Price'];
-  dataSource = ELEMENT_DATA;
+  dataSource: string[];
 
 
   constructor(private ScheduleService: ScheduleService) { }
 
   ngOnInit() {
       this.ScheduleService.getScheldue()
-      .subscribe((response) =>{
-        console.log(response);
+      .subscribe((response: string[]) =>{
+        this.dataSource = response;
         (error)=>(console.log(error))
       });
       

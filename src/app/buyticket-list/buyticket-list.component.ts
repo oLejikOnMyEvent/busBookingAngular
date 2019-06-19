@@ -15,7 +15,7 @@ export class BuyticketListComponent implements OnInit {
 
   show = false;
 
-  constructor() { }
+  constructor(private BuyTicketListService: BuyTicketListService) { }
 
 
   showFlight() {
@@ -41,4 +41,10 @@ export class BuyticketListComponent implements OnInit {
     console.log('submit form', this.form);
     
   }
+
+    checkFlight(){
+     this.BuyTicketListService.checkFlights() 
+          .subscribe()
+    }
+ 
 }

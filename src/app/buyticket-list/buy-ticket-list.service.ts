@@ -8,14 +8,21 @@ import { post } from 'selenium-webdriver/http';
 })
 export class BuyTicketListService {
 
+  urlFlight = 'http://localhost:3000/flight'
 
-  
   constructor(private http: HttpClient) { }
 
 
   postData() {
-   
+
   }
 
- 
+  checkFlights(cityFrom, cityTo, date) {
+    const dataObj = {
+      cityFrom,
+      cityTo,
+      date
+    }
+  return this.http.post(this.urlFlight, dataObj)
+  }
 }
