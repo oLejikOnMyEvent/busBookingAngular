@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { BusSearchService } from '../bus-search.service';
-
+import { SearchBusToService } from './search-bus-to.service';
 
 
 
@@ -21,9 +21,9 @@ import { BusSearchService } from '../bus-search.service';
 
 export class SearchBusToComponent implements OnInit {
 
-  constructor(private BusSearchService: BusSearchService){}
+  constructor(private BusSearchService: BusSearchService, private SearchBusToService: SearchBusToService ) { }
 
-  
+
   myControl = new FormControl();
   options: string[];
   filteredOptions: Observable<string[]>;
@@ -31,29 +31,29 @@ export class SearchBusToComponent implements OnInit {
 
   ngOnInit() {
     this.BusSearchService.getServers()
-    .subscribe(
-      (response) => {
-        this.options = response.map(item => item.title);
+      .subscribe(
+        (response) => {
+          this.options = response.map(item => item.title);
 
-        this.filteredOptions = this.myControl.valueChanges.pipe(
-          startWith(''),
-          map(value => this._filter(value))
-        );
-      },
-      (error) => console.log(error)
-    );
-}
+          this.filteredOptions = this.myControl.valueChanges.pipe(
+            startWith(''),
+            map(value => this._filter(value))
+          );
+        },
+        (error) => console.log(error)
+      );
+  }
 
-private _filter(value: string): string[] {
-  const filterValue = value.toLowerCase();
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
 
- this.cityTo = this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
-
- console.log(this.cityTo.toString());
- 
+    this.cityTo = this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
 
 
+    console.log(this.myControl.value);
 
-  return this.cityTo;
-}
+
+
+    return this.cityTo;
+  }
 }

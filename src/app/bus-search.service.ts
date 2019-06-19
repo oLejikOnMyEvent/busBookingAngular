@@ -8,16 +8,16 @@ import { map } from 'rxjs/operators';
 })
 export class BusSearchService {
 
-  
-   stationUrl = 'http://192.168.2.11:8080/stations'
-   localStationUrl: 'http://localhost:3000/routeFlight'
 
-  constructor(private http: HttpClient){}
+  stationUrl = 'http://192.168.2.11:8080/stations';
+  localStationUrl: 'http://localhost:3000/routeFlight';
+
+  constructor(private http: HttpClient) { }
 
 
-  getServers(){
-         return of([{ id: 1, title: 'Москва' }, { id: 2, title: 'Махачкала' }]);
-   //return this.http.get<{ id: number; title: string; }[]>(this.stationUrl);
+  getServers() {
+    return of([{ id: 1, title: 'Москва' }, { id: 2, title: 'Махачкала' }]);
+    //return this.http.get<{ id: number; title: string; }[]>(this.stationUrl);
 
   }
 }

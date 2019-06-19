@@ -1,0 +1,20 @@
+<form (ngSubmit)="onSubmit()" [formGroup]='form'>
+    <mat-card class="CardSearch">
+  
+    <mat-grid-list cols="4" rowHeight="2:1">
+        <mat-grid-tile>     <app-search-bus FormControlName="cityFrom" [formGroup]='form' > </app-search-bus>
+          <button mat-button class="refreshButton">
+              <mat-icon>cached</mat-icon>
+          </button> </mat-grid-tile>
+        <mat-grid-tile>   <app-search-bus-to FormControlName="cityTo" [formGroup]='form' ></app-search-bus-to>
+        </mat-grid-tile>
+        <mat-grid-tile>  <app-datapicker FormControlName="date" [formGroup]='form'></app-datapicker>
+          <button mat-flat-button color="primary" class="ShowButton" (click)="(showFlight())">Показать</button>
+          <button mat-flat-button color="warn" class="checkButton" style="margin-left:20px;" type="submit"> Check </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card>
+    </form>
+  
+    <app-bus-flight *ngIf="show"> </app-bus-flight>
+    <app-bus-flight *ngIf="show"> </app-bus-flight>

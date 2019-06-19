@@ -12,16 +12,14 @@ import { SearchBusComponent } from './search-bus/search-bus.component'
 
 
 import { CarouselConfigComponent } from './components/carousel-config/carousel-config.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {AppRoutingModule, routingComponents} from './app-routing.module'
-// import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 
-//material imports
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
-import {material} from './material';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { material } from './material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatapickerComponent } from './datapicker/datapicker.component';
 
 
@@ -38,7 +36,8 @@ import { SinginComponent } from './auth/singin/singin.component';
 import { SeatsComponent } from './seats/seats.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ScheduleComponent } from './schedule/schedule.component';
-import { LogoutComponent } from './auth/logout/logout.component'
+import { LogoutComponent } from './auth/logout/logout.component';
+import { HeaderDirective } from './header/header.directive'
 
 
 
@@ -55,7 +54,7 @@ import { LogoutComponent } from './auth/logout/logout.component'
     BusFlightComponent,
     BusHistoryComponent,
     BusSeatsComponent,
-    
+
     HistoryPageComponent,
     SingupComponent,
     SinginComponent,
@@ -63,8 +62,9 @@ import { LogoutComponent } from './auth/logout/logout.component'
     CheckoutComponent,
     ScheduleComponent,
     LogoutComponent,
-  
- 
+    HeaderDirective,
+
+
   ],
   imports: [
     BrowserModule,
@@ -76,15 +76,15 @@ import { LogoutComponent } from './auth/logout/logout.component'
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientJsonpModule,
-  
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
 
 
-  
+
 }
 
 
