@@ -37,7 +37,8 @@ import { SeatsComponent } from './seats/seats.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { LogoutComponent } from './auth/logout/logout.component';
-import { HeaderDirective } from './header/header.directive'
+import { HeaderDirective } from './header/header.directive';
+import { BuyingpageComponent } from './buyingpage/buyingpage.component'
 
 
 
@@ -63,6 +64,7 @@ import { HeaderDirective } from './header/header.directive'
     ScheduleComponent,
     LogoutComponent,
     HeaderDirective,
+    BuyingpageComponent,
 
 
   ],

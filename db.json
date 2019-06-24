@@ -31,19 +31,10 @@
             "ticketPrice": 1500
         }
     ],
-    "routeFlight":[
-    {
-        "id": 1, "title": "Moscow"
-    },
-    {
-        "id":2, "title": "Makhachkala"
-    },
-    {
-        "id":3, "title": "Rostov"
-    }
-    ],
+    "routeFlight":[{"id": 1, "title": "Moscow"},{ "id":2, "title": "Makhachkala"},{"id":3, "title": "Rostov"}],
+    
     "Schedule":[
-        {
+{
             "id": 1, "flightFrom": "Moscow", "flightTo":"Makhachkala", "Time":" 07 :00", "Date" :"01.01.19", "Price": "1500"
         },
         {

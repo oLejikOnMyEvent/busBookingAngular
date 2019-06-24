@@ -42,9 +42,9 @@ export class BuyticketListComponent implements OnInit {
     
   }
 
-    checkFlight(){
-     this.BuyTicketListService.checkFlights() 
-          .subscribe()
-    }
+    // checkFlight(){
+    //  this.BuyTicketListService.checkFlights() 
+    //       .subscribe()
+    // }
  
 }
