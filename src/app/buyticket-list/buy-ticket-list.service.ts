@@ -1,14 +1,15 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { post } from 'selenium-webdriver/http';
-
+// import { resultCityTo } from '../search-bus-to/search-bus-to.component';
+// import { resultCityFrom} from '../search-bus/search-bus.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BuyTicketListService {
 
-  urlFlight = 'http://localhost:3000/flight'
+  localUrlFlight = 'http://localhost:3000/flight';
+  stableUrlFlight = "http://localhost:8080/schedule?start=1&finish=2";
 
   constructor(private http: HttpClient) { }
 
@@ -17,12 +18,12 @@ export class BuyTicketListService {
 
   }
 
-  checkFlights(cityFrom, cityTo, date) {
+  checkFlights(cityFrom, cityTo) {
     const dataObj = {
       cityFrom,
-      cityTo,
-      date
+      cityTo
     }
-  return this.http.post(this.urlFlight, dataObj)
+    return this.http.post(`http://localhost:8080/schedule?start=${cityFrom}&finish=${cityTo}`, { dataObj });
   }
+  
 }

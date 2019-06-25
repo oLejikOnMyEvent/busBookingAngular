@@ -1,20 +1,56 @@
-<form (ngSubmit)="onSubmit()" [formGroup]='form'>
+<form (ngSubmit)="onSubmit()">
     <mat-card class="CardSearch">
   
     <mat-grid-list cols="4" rowHeight="2:1">
-        <mat-grid-tile>     <app-search-bus FormControlName="cityFrom" [formGroup]='form' > </app-search-bus>
+        <mat-grid-tile>     
+            <div class="searchFrom">
+                <mat-form-field class="example-full-width" >
+                  <input type="text" placeholder="Станция отправления" aria-label="Number" matInput [formControl]="myControl"
+                    [matAutocomplete]="auto">
+                  <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                      {{option.title }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+                
+                </div>
+
           <button mat-button class="refreshButton">
               <mat-icon>cached</mat-icon>
           </button> </mat-grid-tile>
-        <mat-grid-tile>   <app-search-bus-to FormControlName="cityTo" [formGroup]='form' ></app-search-bus-to>
+
+         
+
+        <mat-grid-tile>  
+
+            <div class="searchTo">
+                <form class="example-form">
+                    <mat-form-field class="example-full-width">
+                      <input type="text" placeholder="Станция прибытия" aria-label="Number" matInput [formControl]="myControl1"
+                        [matAutocomplete]="auto">
+                      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{ option.title }}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  </form>
+  
+            </div>
+          
         </mat-grid-tile>
-        <mat-grid-tile>  <app-datapicker FormControlName="date" [formGroup]='form'></app-datapicker>
-          <button mat-flat-button color="primary" class="ShowButton" (click)="(showFlight())">Показать</button>
+        <mat-grid-tile>  <app-datapicker ></app-datapicker>
+          <button mat-flat-button color="primary" class="ShowButton"> Показать</button>
           <button mat-flat-button color="warn" class="checkButton" style="margin-left:20px;" type="submit"> Check </button>
         </mat-grid-tile>
       </mat-grid-list>
     </mat-card>
     </form>
   
+  
+
     <app-bus-flight *ngIf="show"> </app-bus-flight>
     <app-bus-flight *ngIf="show"> </app-bus-flight>
+
+    <!-- <span>{{ | json}} </span> -->

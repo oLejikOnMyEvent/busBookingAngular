@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { BusSearchService } from '../bus-search.service';
@@ -8,12 +8,10 @@ import { isNgTemplate } from '@angular/compiler';
 
 
 
-
 export interface StationUrl {
   id: number;
   title: string;
 }
-
 
 
 
@@ -31,19 +29,16 @@ export class SearchBusComponent implements OnInit {
 
 
   myControl = new FormControl();
-  // options: StationUrl[] = [
-  //   { id: 1, title: 'Москва' },
-  //   { id: 2, title: 'Махачкала' },
-  //   { id: 3, title: 'Воронеж' }
-  // ];
-   options: StationUrl[] ;
+
+  options: StationUrl[];
   filteredOptions: Observable<StationUrl[]>;
+  resultCityFrom: string;
 
   ngOnInit() {
     this.BusSearchService.getServers()
       .subscribe(
         (response) => (
-            this.options = response,
+          this.options = response,
           this.filteredOptions = this.myControl.valueChanges
             .pipe(
               startWith(''),
@@ -55,16 +50,21 @@ export class SearchBusComponent implements OnInit {
   }
 
 
- 
- 
+
+
   displayFn(station?: StationUrl): string | undefined {
     return station ? station.title : undefined;
   }
 
   private _filter(title: string): StationUrl[] {
     const filterValue = title.toLowerCase();
-    
 
+
+    this.resultCityFrom = JSON.stringify(this.myControl.value.id);
+
+    console.log(this.resultCityFrom, typeof this.resultCityFrom);
+
+    console.log(this.myControl.value, 'first autocompliter');
     return this.options.filter(option => option.title.toLowerCase().indexOf(filterValue) === 0);
   }
 
