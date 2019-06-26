@@ -10,7 +10,7 @@ export class BusFlightService implements OnInit {
   dataFlight: string;
 
 
-  constructor(private  SearchBusComponent:  SearchBusComponent, private SearchBusToComponent: SearchBusToComponent,  private DatapickerComponent: DatapickerComponent) { }
+  constructor() { }
 
   ngOnInit(){
  

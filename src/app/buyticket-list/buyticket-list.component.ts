@@ -27,23 +27,33 @@ export interface StationUrlTo {
 export class BuyticketListComponent implements OnInit {
 
   events: string[] = [];
-  form: FormGroup;
+
 
   show = false;
 
-  constructor(private BusSearchService: BusSearchService) { }
-
-
-  myControl = new FormControl();
+  myControl = new FormControl('');
   options: StationUrlFrom[];
   filteredOptions: Observable<StationUrlFrom[]>;
 
-  myControlTo = new FormControl();
+  myControlTo = new FormControl('');
   optionsTo: StationUrlTo[];
   filteredOptionsTo: Observable<StationUrlTo[]>;
 
   resultCityFrom: string;
-  reultCityTo: string;
+  resultCityTo: string;
+
+
+
+  form = new FormGroup({
+    myControl: this.myControl,
+    myControlTo: this.myControlTo,
+    date: new FormControl(''),
+  })
+
+
+  constructor(private BusSearchService: BusSearchService, private BuyTicketListService: BuyTicketListService ) { }
+
+
 
 
 
@@ -57,6 +67,8 @@ export class BuyticketListComponent implements OnInit {
 
 
   ngOnInit() {
+
+
     this.BusSearchService.getServers()
       .subscribe(
         (response) => (
@@ -81,6 +93,8 @@ export class BuyticketListComponent implements OnInit {
             )
         )
       );
+
+
   }
 
   displayFn(station?: StationUrlFrom): string | undefined {
@@ -108,8 +122,8 @@ export class BuyticketListComponent implements OnInit {
   private _filterTo(title: string): StationUrlTo[] {
     const filterValueTo = title.toLowerCase();
 
-    this. reultCityTo = JSON.stringify(this.myControlTo.value.id);
-    console.log(typeof this. reultCityTo, this. reultCityTo);
+    this.resultCityTo = JSON.stringify(this.myControlTo.value.id);
+    console.log(typeof this.resultCityTo, this.resultCityTo);
 
 
 
@@ -124,10 +138,23 @@ export class BuyticketListComponent implements OnInit {
     console.log(this.events);
   }
 
-;
+  ;
+
+
 
   onSubmit() {
-    console.log('submit form', this.form);
+    let sendCityFrom = JSON.stringify(this.form.value.myControl.id);
+    let sendCityTo = JSON.stringify(this.form.value.myControlTo.id);
+    let sendDate = this.form.value.date;
+
+    this.BuyTicketListService.checkFlights(sendCityFrom, sendCityTo)
+      .subscribe(
+        (response) => console.log(response),
+        (error)  => console.log(error)
+        
+      )
+
+    console.log(`City From ${sendCityFrom}`, `City To ${sendCityTo}`, `Date ${sendDate}`);
 
   }
 

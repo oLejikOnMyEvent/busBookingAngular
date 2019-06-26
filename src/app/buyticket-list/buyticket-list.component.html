@@ -1,12 +1,12 @@
-<form (ngSubmit)="onSubmit()" >
-    <!-- [formGroup]='form' -->
+<form (ngSubmit)="onSubmit()" [formGroup]='form' >
+ 
     <mat-card class="CardSearch">
   
     <mat-grid-list cols="4" rowHeight="2:1">
         <mat-grid-tile>     
             <div class="searchFrom">
                 <mat-form-field class="example-full-width" >
-                  <input type="text" placeholder="Станция отправления" aria-label="Number" matInput [formControl]="myControl"
+                  <input type="text" placeholder="Станция отправления" aria-label="Number" matInput [formControl]="myControl"  
                     [matAutocomplete]="auto">
                   <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -26,7 +26,7 @@
         <mat-grid-tile>  
          
           <mat-form-field class="example-full-width">
-            <input type="text" placeholder="Станция прибытия" aria-label="Number" matInput [formControl]="myControlTo"
+            <input type="text" placeholder="Станция прибытия" aria-label="Number" matInput [formControl]="myControlTo" 
               [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFnTo">
               <mat-option *ngFor="let optionsTo of filteredOptionsTo | async" [value]="optionsTo">
@@ -40,7 +40,7 @@
 
             <mat-form-field>
                 <input matInput [matDatepicker]="picker" placeholder="Выберите Дату" 
-                (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+                (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)" formControlName="date">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
