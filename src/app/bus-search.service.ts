@@ -16,9 +16,9 @@ export class BusSearchService {
 
 
   getServers() {
-   return of([{ id: 1, title: 'Москва' }, { id: 2, title: 'Махачкала' }]);
+  return of([{ id: 1, title: 'Москва' }, { id: 2, title: 'Махачкала' }]);
   // return this.http.get<{ id: number; title: string; }[]>(this.localStationUrl);
-    //return this.http.get<{ id: number; title: string; }[]>(this.stationUrl);
+  //return this.http.get<{ id: number; title: string; }[]>(this.stationUrl);
 
   }
 }

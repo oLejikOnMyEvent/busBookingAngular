@@ -8,7 +8,7 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { SearchBusComponent } from './search-bus/search-bus.component'
+// import { SearchBusComponent } from './search-bus/search-bus.component';
 
 
 import { CarouselConfigComponent } from './components/carousel-config/carousel-config.component';
@@ -20,15 +20,12 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { material } from './material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DatapickerComponent } from './datapicker/datapicker.component';
 
 
 
-import { SearchBusToComponent } from './search-bus-to/search-bus-to.component';
 import { BusFlightComponent } from './bus-flight/bus-flight.component';
 import { BusHistoryComponent } from './bus-history/bus-history.component';
 import { BusSeatsComponent } from './bus-seats/bus-seats.component';
-import { HistoryPageComponent } from './history-page/history-page.component';
 
 import { BusSearchService } from './bus-search.service';
 import { SingupComponent } from './auth/singup/singup.component';
@@ -49,14 +46,9 @@ import { BuyingpageComponent } from './buyingpage/buyingpage.component'
     HeaderComponent,
     CarouselConfigComponent,
     routingComponents,
-    SearchBusComponent,
-    DatapickerComponent,
-    SearchBusToComponent,
     BusFlightComponent,
     BusHistoryComponent,
     BusSeatsComponent,
-
-    HistoryPageComponent,
     SingupComponent,
     SinginComponent,
     SeatsComponent,

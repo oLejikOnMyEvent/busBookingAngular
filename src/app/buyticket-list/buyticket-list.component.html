@@ -1,4 +1,5 @@
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" >
+    <!-- [formGroup]='form' -->
     <mat-card class="CardSearch">
   
     <mat-grid-list cols="4" rowHeight="2:1">
@@ -23,25 +24,31 @@
          
 
         <mat-grid-tile>  
-
-            <div class="searchTo">
-                <form class="example-form">
-                    <mat-form-field class="example-full-width">
-                      <input type="text" placeholder="Станция прибытия" aria-label="Number" matInput [formControl]="myControl1"
-                        [matAutocomplete]="auto">
-                      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                            {{ option.title }}
-                        </mat-option>
-                      </mat-autocomplete>
-                    </mat-form-field>
-                  </form>
-  
-            </div>
+         
+          <mat-form-field class="example-full-width">
+            <input type="text" placeholder="Станция прибытия" aria-label="Number" matInput [formControl]="myControlTo"
+              [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFnTo">
+              <mat-option *ngFor="let optionsTo of filteredOptionsTo | async" [value]="optionsTo">
+                  {{ optionsTo.title }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
           
         </mat-grid-tile>
-        <mat-grid-tile>  <app-datapicker ></app-datapicker>
-          <button mat-flat-button color="primary" class="ShowButton"> Показать</button>
+        <mat-grid-tile> 
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Выберите Дату" 
+                (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            
+
+
+
+          <button mat-flat-button color="primary" class="ShowButton" (click)="showFlight()"> Показать</button>
           <button mat-flat-button color="warn" class="checkButton" style="margin-left:20px;" type="submit"> Check </button>
         </mat-grid-tile>
       </mat-grid-list>

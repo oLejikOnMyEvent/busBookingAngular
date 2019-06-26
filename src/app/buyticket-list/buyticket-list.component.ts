@@ -5,6 +5,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { BusSearchService } from '../bus-search.service';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 
 export interface StationUrlFrom {
@@ -25,23 +26,28 @@ export interface StationUrlTo {
 })
 export class BuyticketListComponent implements OnInit {
 
+  events: string[] = [];
   form: FormGroup;
 
   show = false;
 
-
-  From: string;
   constructor(private BusSearchService: BusSearchService) { }
 
 
   myControl = new FormControl();
-  myControl1 = new FormControl();
   options: StationUrlFrom[];
-   options1: StationUrlTo[];
   filteredOptions: Observable<StationUrlFrom[]>;
-   filteredOptions1: Observable<StationUrlTo[]>;
+
+  myControlTo = new FormControl();
+  optionsTo: StationUrlTo[];
+  filteredOptionsTo: Observable<StationUrlTo[]>;
+
   resultCityFrom: string;
   reultCityTo: string;
+
+
+
+
 
   showFlight() {
     this.show = true;
@@ -62,18 +68,18 @@ export class BuyticketListComponent implements OnInit {
               map(title => title ? this._filter(title) : this.options.slice()),
             )
         )
-              .subscribe(
-                (response) => (
-                  this.options1 = response,
-                  this.filteredOptions1 = this.myControl1.valueChanges
-                    .pipe(
-                      startWith(''),
-                      map(value => typeof value === 'string' ? value : value.title),
-                      map(title => title ? this._filter(title) : this.options1.slice()),
-                    )
-                )
-              )
-
+      );
+    this.BusSearchService.getServers()
+      .subscribe(
+        (response) => (
+          this.optionsTo = response,
+          this.filteredOptionsTo = this.myControlTo.valueChanges
+            .pipe(
+              startWith(''),
+              map(value => typeof value === 'string' ? value : value.title),
+              map(title => title ? this._filterTo(title) : this.optionsTo.slice())
+            )
+        )
       );
   }
 
@@ -81,12 +87,10 @@ export class BuyticketListComponent implements OnInit {
     return station ? station.title : undefined;
   }
 
-  displayFn1(station?: StationUrlTo): string | undefined {
-    return station ? station.title : undefined;
-  }
-  private _filter(title: string, title1: string): StationUrlFrom[] {
+
+  private _filter(title: string): StationUrlFrom[] {
     const filterValue = title.toLowerCase();
-    const filterValue1 = title.toLowerCase();
+
 
 
     this.resultCityFrom = JSON.stringify(this.myControl.value.id);
@@ -95,6 +99,32 @@ export class BuyticketListComponent implements OnInit {
 
     return this.options.filter(option => option.title.toLowerCase().indexOf(filterValue) === 0);
   }
+
+
+  displayFnTo(station?: StationUrlTo): string | undefined {
+    return station ? station.title : undefined;
+  }
+
+  private _filterTo(title: string): StationUrlTo[] {
+    const filterValueTo = title.toLowerCase();
+
+    this. reultCityTo = JSON.stringify(this.myControlTo.value.id);
+    console.log(typeof this. reultCityTo, this. reultCityTo);
+
+
+
+
+    return this.optionsTo.filter(option => option.title.toLowerCase().indexOf(filterValueTo) === 0);
+
+
+  }
+
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    this.events.push(`${type}: ${event.value}`);
+    console.log(this.events);
+  }
+
+;
 
   onSubmit() {
     console.log('submit form', this.form);
