@@ -11,10 +11,12 @@ export class ScheduleService {
 
   constructor(private http: HttpClient) { }
 
-  ulrScheldue = 'http://localhost:3000/Schedule';
+  localUrlScheldue = 'http://localhost:3000/Schedule';
+  baseUrl = 'http://192.168.2.11:8080/schedule';
+
 
     getScheldue(){
-          return this.http.get(this.ulrScheldue);
+          return this.http.get(this.localUrlScheldue);
     }
 
 }

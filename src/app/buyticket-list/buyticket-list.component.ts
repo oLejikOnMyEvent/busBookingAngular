@@ -6,6 +6,7 @@ import { BusSearchService } from '../bus-search.service';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { BusFlightComponent } from '../bus-flight/bus-flight.component';
 
 
 export interface StationUrlFrom {
@@ -51,7 +52,11 @@ export class BuyticketListComponent implements OnInit {
   })
 
 
-  constructor(private BusSearchService: BusSearchService, private BuyTicketListService: BuyTicketListService ) { }
+
+  responseStations: any;
+
+
+  constructor(private BusSearchService: BusSearchService, private BuyTicketListService: BuyTicketListService) { }
 
 
 
@@ -138,7 +143,7 @@ export class BuyticketListComponent implements OnInit {
     console.log(this.events);
   }
 
-  ;
+
 
 
 
@@ -147,13 +152,18 @@ export class BuyticketListComponent implements OnInit {
     let sendCityTo = JSON.stringify(this.form.value.myControlTo.id);
     let sendDate = this.form.value.date;
 
-    this.BuyTicketListService.checkFlights(sendCityFrom, sendCityTo)
-      .subscribe(
-        (response) => console.log(response),
-        (error)  => console.log(error)
-        
-      )
+    if (sendCityFrom !== sendCityTo) {
+      this.BuyTicketListService.checkFlights(sendCityFrom, sendCityTo)
+        .subscribe(
+          (response) => {
+            this.responseStations = response;
+            console.log(this.responseStations);
+          },
+          (error) => console.log(error)
 
+
+        );
+    } else { alert('Ошибка: совпадают название станции отправления и станции прибытия') }
     console.log(`City From ${sendCityFrom}`, `City To ${sendCityTo}`, `Date ${sendDate}`);
 
   }

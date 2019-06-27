@@ -27,7 +27,7 @@ import { BusFlightComponent } from './bus-flight/bus-flight.component';
 import { BusHistoryComponent } from './bus-history/bus-history.component';
 import { BusSeatsComponent } from './bus-seats/bus-seats.component';
 
-import { BusSearchService } from './bus-search.service';
+
 import { SingupComponent } from './auth/singup/singup.component';
 import { SinginComponent } from './auth/singin/singin.component';
 import { SeatsComponent } from './seats/seats.component';
@@ -35,8 +35,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { HeaderDirective } from './header/header.directive';
-import { BuyingpageComponent } from './buyingpage/buyingpage.component'
-
+import { BuyingpageComponent } from './buyingpage/buyingpage.component';
+import { BuyticketListComponent } from './buyticket-list/buyticket-list.component';
 
 
 
@@ -57,7 +57,7 @@ import { BuyingpageComponent } from './buyingpage/buyingpage.component'
     LogoutComponent,
     HeaderDirective,
     BuyingpageComponent,
-
+    BuyticketListComponent
 
   ],
   imports: [
