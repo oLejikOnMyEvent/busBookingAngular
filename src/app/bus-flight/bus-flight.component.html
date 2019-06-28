@@ -1,8 +1,8 @@
-<mat-card class="BusFlightCard">
+<mat-card class="BusFlightCard" *ngFor="let busFlight of busFlights">
 
-  <h4 style="display: flex; justify-content: center" >Номер рейса 1 </h4>
+  <h4 style="display: flex; justify-content: center" >Номер рейса {{ busFlight.id}}</h4>
     <mat-grid-list cols="6" rowHeight="2:1">
-<h1 style="display: flex; justify-content: center">  Москва  --- Махачкала </h1>
+<h1 style="display: flex; justify-content: center">  {{busFlight.title}} </h1>
  
 
 </mat-grid-list>

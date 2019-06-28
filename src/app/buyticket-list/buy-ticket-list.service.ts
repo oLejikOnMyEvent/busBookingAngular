@@ -15,11 +15,10 @@ export class BuyTicketListService {
 
   constructor(private http: HttpClient) { }
 
+  flightList: any;
 
   checkFlights(cityFrom, cityTo) {
-    return this.http.get(`http://192.168.2.11:8080/schedule?start=${cityFrom}&finish=${cityTo}`)
-
-
+    return this.flightList = this.http.get(`http://192.168.2.11:8080/schedule?start=${cityFrom}&finish=${cityTo}`)
   }
 
 

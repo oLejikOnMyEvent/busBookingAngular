@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { BuyTicketListService } from './buy-ticket-list.service';
 import { from } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -53,7 +53,7 @@ export class BuyticketListComponent implements OnInit {
 
 
 
-  responseStations: any;
+responseStations: any;
 
 
   constructor(private BusSearchService: BusSearchService, private BuyTicketListService: BuyTicketListService) { }
@@ -167,15 +167,5 @@ export class BuyticketListComponent implements OnInit {
     console.log(`City From ${sendCityFrom}`, `City To ${sendCityTo}`, `Date ${sendDate}`);
 
   }
-
-
-
-  //   checkFlight(cityTo, cityFrom) {
-  //   this.BuyTicketListService.checkFlights(cityTo, cityFrom)
-  //     .subscribe(
-  //       (response) => console.log(response),
-  //       (error) => console.log(error)
-  //     )
-  // }
 
 }
