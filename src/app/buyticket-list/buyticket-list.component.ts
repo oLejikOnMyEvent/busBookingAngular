@@ -53,7 +53,7 @@ export class BuyticketListComponent implements OnInit {
 
 
 
-responseStations: any;
+   responseStations: any = 'privet';
 
 
   constructor(private BusSearchService: BusSearchService, private BuyTicketListService: BuyTicketListService) { }
@@ -63,10 +63,6 @@ responseStations: any;
 
 
 
-
-  showFlight() {
-    this.show = true;
-  }
 
 
 
@@ -98,6 +94,7 @@ responseStations: any;
             )
         )
       );
+
 
 
   }
@@ -148,24 +145,30 @@ responseStations: any;
 
 
   onSubmit() {
+      
     let sendCityFrom = JSON.stringify(this.form.value.myControl.id);
     let sendCityTo = JSON.stringify(this.form.value.myControlTo.id);
     let sendDate = this.form.value.date;
 
     if (sendCityFrom !== sendCityTo) {
-      this.BuyTicketListService.checkFlights(sendCityFrom, sendCityTo)
-        .subscribe(
-          (response) => {
-            this.responseStations = response;
-            console.log(this.responseStations);
-          },
-          (error) => console.log(error)
+    this.BuyTicketListService.checkFlights(sendCityFrom, sendCityTo)
+      .subscribe(
+        (response) => {
+          this.responseStations = response;
+          console.log(this.responseStations);
+        },
+        (error) => console.log(error)
 
 
-        );
+      );
     } else { alert('Ошибка: совпадают название станции отправления и станции прибытия') }
     console.log(`City From ${sendCityFrom}`, `City To ${sendCityTo}`, `Date ${sendDate}`);
 
+  }
+
+
+  showFlight() {
+    this.show = true;
   }
 
 }
