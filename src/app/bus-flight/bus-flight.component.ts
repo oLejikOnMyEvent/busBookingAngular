@@ -19,7 +19,9 @@ import { BuyTicketListService } from '../buyticket-list/buy-ticket-list.service'
 })
 export class BusFlightComponent implements OnInit, OnChanges {
 
-  @Input() responseStations: BuyticketListComponent;
+  @Input() responseStations: any;
+
+
   busFlights = [{
     title: 'msk-je',
     id: '1488',
@@ -33,24 +35,19 @@ export class BusFlightComponent implements OnInit, OnChanges {
     countsOfSeats: "6005",
   },
   ]
-  testBusflight;
+
+  // responseStations = this.busFlights;
   constructor(private BuyTicketListService: BuyTicketListService) { }
 
 
 
   ngOnChanges() {
-    this.BuyTicketListService.checkFlights(1, 2)
-      .subscribe(
-        (response) => this.testBusflight = response,
-        (error) => console.log(error)
-      )
-
-
+    console.log(this.responseStations, 'responeStations from bus-flight component');
   }
 
   ngOnInit() {
 
-    console.log(this.responseStations, this.testBusflight, 'responeStations from bus-flight component');
+
 
     // console.log(this.stations, 'this.responseStations from busFlight component');
   }
