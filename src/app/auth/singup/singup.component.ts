@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { RegistrService } from './registr.service'; 
 
@@ -11,22 +11,23 @@ import { RegistrService } from './registr.service';
 })
 export class SingupComponent implements OnInit {
 
- login: string = " ";
- password: string =" ";
- fullname: string = " ";
+
+  form: FormGroup;
+
 
   constructor(private regist:RegistrService ) { }
 
   ngOnInit() {
-   
+   this.form = new FormGroup({
+     userName : new FormControl(null, [Validators.required]),
+  password: new FormControl(null,[Validators.required]),
+     fullName : new FormControl (null, [Validators.required])
+   });
 
   }
-  AddNewUser(){
-      this.regist.addUser(this.login, this.password, this.fullname)
-      .subscribe((json)=> {console.log(json) });
-      this.login = "";
-      this.password = "";
-      this.fullname ="";
+
+  onSubmit(){
+        console.log(this.form);
     }
 
 

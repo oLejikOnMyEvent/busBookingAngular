@@ -1,21 +1,40 @@
 
 
 
- <form class="example-form " (ngSubmit) ="AddNewUser()"> 
+ <form class="example-form " (ngSubmit) ="onSubmit()" [formGroup]="form"> 
  
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="login" value="" id="login" ([ngModel])="login"> 
+    <input 
+    matInput placeholder="userName" id="login"  fromControlName="userName"
+    [ngClass]="{'has error': form.get('userName').invalid && form.get('userName').touched}"> 
+    <span class="form-help-text" *ngIf="form.get('userName').invalid && form.get('UserName').touched"> 
+
+     userName не может быть пустым
+
+    </span>
+  
   </mat-form-field>
 
 
 
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="password" value="" id="password" ([ngModel])="password">
+    <input matInput placeholder="password"  id="password"  fromControlName="password"
+    [ngClass]="{'has error': form.get('password').invalid && form.get('password').touched}">
+   
+   <span class="form-help-text" *ngIf="form.get('password').invalid && form.get('password').touched"> 
+
+    password не может быть пустым
+
+  </span>
   </mat-form-field>
   <mat-form-field class="example-full-width">
-      <input matInput placeholder="Full name" value="" id="name" ([ngModel])="fullname">
+      <input matInput placeholder="Full name"  id="name"  fromControlName="fullName"
+      [ngClass]="{'has error': form.get('fullName').invalid && form.get('fullName').touched}">
+      <span class="form-help-text" *ngIf="form.get('fullName').invalid && form.get('fullName').touched"> 
+
+      fullName не может быть пустым
+    
+      </span>
     </mat-form-field>
-  <button mat-raised-button color="primary" (click)="AddNewUser()"> Sign up </button>
+  <button mat-raised-button color="primary" type="submit"> Sign up </button>
 </form>
-
-<!-- -->
