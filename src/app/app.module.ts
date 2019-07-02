@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 
 
-import { NgModule } from '@angular/core';
+import { NgModule,  } from '@angular/core';
 
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
@@ -38,6 +38,7 @@ import { HeaderDirective } from './header/header.directive';
 import { BuyingpageComponent } from './buyingpage/buyingpage.component';
 import { BuyticketListComponent } from './buyticket-list/buyticket-list.component';
 
+// import{ MatMomentDateModule} from ''
 
 
 @NgModule({
@@ -70,7 +71,6 @@ import { BuyticketListComponent } from './buyticket-list/buyticket-list.componen
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientJsonpModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]

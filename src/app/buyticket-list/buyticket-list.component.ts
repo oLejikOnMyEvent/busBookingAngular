@@ -8,6 +8,8 @@ import { map, startWith } from 'rxjs/operators';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { BusFlightComponent } from '../bus-flight/bus-flight.component';
 
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+// import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
 
 export interface StationUrlFrom {
   id: number;
@@ -23,12 +25,16 @@ export interface StationUrlTo {
 @Component({
   selector: 'app-buyticket-list',
   templateUrl: './buyticket-list.component.html',
-  styleUrls: ['./buyticket-list.component.css']
+  styleUrls: ['./buyticket-list.component.css'],
+  providers: []
 })
 export class BuyticketListComponent implements OnInit {
 
-  events: string[] = [];
 
+  minDate = new Date();
+  maxDate = new Date();
+
+  events: string[] = [];
 
   show = false;
 
@@ -60,20 +66,11 @@ export class BuyticketListComponent implements OnInit {
 
 
 
-
-
-
-
-// clearCityFrom(){
-//   this.filteredOptions = null;
-// }
-
-// clearCityTo(){
-//   this.filteredOptionsTo = null;
-// }
-
-
   ngOnInit() {
+
+
+    this.maxDate = new Date();
+    this.maxDate.setDate(this.maxDate.getDate() + 14);
 
     this.BusSearchService.getServers()
       .subscribe(
@@ -116,7 +113,7 @@ export class BuyticketListComponent implements OnInit {
 
     this.resultCityFrom = JSON.stringify(this.myControl.value.id);
 
-    console.log(this.resultCityFrom, typeof this.resultCityFrom);
+    // console.log(this.resultCityFrom, typeof this.resultCityFrom);
 
     return this.options.filter(option => option.title.toLowerCase().indexOf(filterValue) === 0);
   }
@@ -156,7 +153,7 @@ export class BuyticketListComponent implements OnInit {
     let sendDate = this.form.value.date;
 
     if (sendCityFrom !== sendCityTo) {
-      this.BuyTicketListService.checkFlights(sendCityFrom, sendCityTo)
+      this.BuyTicketListService.checkFlights(sendCityFrom, sendCityTo, sendDate)
         .subscribe(
           (response) => {
             this.responseStationsObj = response;
