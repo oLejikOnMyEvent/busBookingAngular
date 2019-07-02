@@ -11,6 +11,8 @@ import { BusFlightComponent } from '../bus-flight/bus-flight.component';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 // import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
 
+import * as moment from 'moment';
+
 export interface StationUrlFrom {
   id: number;
   title: string;
@@ -33,6 +35,8 @@ export class BuyticketListComponent implements OnInit {
 
   minDate = new Date();
   maxDate = new Date();
+
+
 
   events: string[] = [];
 
@@ -150,7 +154,7 @@ export class BuyticketListComponent implements OnInit {
 
     let sendCityFrom = JSON.stringify(this.form.value.myControl.id);
     let sendCityTo = JSON.stringify(this.form.value.myControlTo.id);
-    let sendDate = this.form.value.date;
+    let sendDate = this.form.value.date.moment().format("YYYY-MM-DD");
 
     if (sendCityFrom !== sendCityTo) {
       this.BuyTicketListService.checkFlights(sendCityFrom, sendCityTo, sendDate)
