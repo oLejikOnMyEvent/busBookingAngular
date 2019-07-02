@@ -1,8 +1,8 @@
 <mat-card class="BusFlightCard" *ngFor="let station of responseStations">
 
-  <h4 style="display: flex; justify-content: center" >Номер рейса {{  station.id }}</h4>
+  <h4 style="display: flex; justify-content: center" >Номер рейса {{  station.route }}</h4>
     <mat-grid-list cols="6" rowHeight="2:1">
-<h1 style="display: flex; justify-content: center">  {{station.routeSegmentDto.routeDto.title}} </h1>
+<h1 style="display: flex; justify-content: center">  {{station.start}} -  {{station.finish}}  </h1>
  
 
 </mat-grid-list>
@@ -35,9 +35,9 @@
   
     </mat-grid-list>
 
-    <button mat-raised-button color="primary" >Купить за 1500</button>
+    <button mat-raised-button color="primary" >Купить за {{station.price}}</button>
     <a mat-raised-button routerLink="/seats" >Buy test</a>
-    <span style="margin-left: 20px">количество мест {{station.busDto.seatsCount}} </span>
-    <button mat-raised-button color="primary" disabled> Автобус {{station.busDto.title}}</button>
+ 
+  
 
 </mat-card>

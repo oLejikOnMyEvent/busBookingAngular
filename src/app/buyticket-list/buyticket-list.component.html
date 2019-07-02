@@ -7,17 +7,21 @@
             <div class="searchFrom">
                 <mat-form-field class="example-full-width" >
                   <input type="text" placeholder="Станция отправления" aria-label="Number" matInput [formControl]="myControl"  
-                    [matAutocomplete]="auto" >
+                    [matAutocomplete]="auto"  #cityFrom name="cityFrom">
                   <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                       {{option.title }}
                     </mat-option>
                   </mat-autocomplete>
+
                 </mat-form-field>
                 
                 </div>
+                <button type="button" mat-button class="refreshButton" (click) = "cityFrom.value = ' '" >
+                  <mat-icon>highlight_off</mat-icon>
+              </button> 
 
-          <button mat-button class="refreshButton">
+          <button type="button" mat-button class="refreshButton" style="margin-left: 100px;">
               <mat-icon>cached</mat-icon>
           </button> </mat-grid-tile>
 
@@ -27,14 +31,18 @@
          
           <mat-form-field class="example-full-width">
             <input type="text" placeholder="Станция прибытия" aria-label="Number" matInput [formControl]="myControlTo" 
-              [matAutocomplete]="auto">
+              [matAutocomplete]="auto" #cityTo name="cityTo">
             <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFnTo">
               <mat-option *ngFor="let optionsTo of filteredOptionsTo | async" [value]="optionsTo">
                   {{ optionsTo.title }}
               </mat-option>
             </mat-autocomplete>
+
+            
           </mat-form-field>
-          
+          <button type="button" mat-button class="refreshButton"  (click) = "cityTo.value = null">
+            <mat-icon>highlight_off</mat-icon>
+        </button> 
         </mat-grid-tile>
         <mat-grid-tile> 
 
@@ -48,7 +56,7 @@
 
 
 
-          <button mat-flat-button color="primary" class="ShowButton" (click)="showFlight()"> Показать</button>
+          <button mat-flat-button color="primary" class="ShowButton" (click)="showFlight()"  style="margin-left:20px;" > Показать</button>
           <button mat-flat-button color="warn" class="checkButton" style="margin-left:20px;" type="submit"> Check </button>
         </mat-grid-tile>
       </mat-grid-list>

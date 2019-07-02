@@ -64,10 +64,16 @@ export class BuyticketListComponent implements OnInit {
 
 
 
+// clearCityFrom(){
+//   this.filteredOptions = null;
+// }
+
+// clearCityTo(){
+//   this.filteredOptionsTo = null;
+// }
 
 
   ngOnInit() {
-
 
     this.BusSearchService.getServers()
       .subscribe(
@@ -154,7 +160,7 @@ export class BuyticketListComponent implements OnInit {
         .subscribe(
           (response) => {
             this.responseStationsObj = response;
-            console.log(this.responseStationsObj);
+            console.log(this.responseStationsObj, 'responseStationsObj');
           },
           (error) => console.log(error)
 
