@@ -17,39 +17,51 @@ import { BuyTicketListService } from '../buyticket-list/buy-ticket-list.service'
   templateUrl: './bus-flight.component.html',
   styleUrls: ['./bus-flight.component.css']
 })
-export class BusFlightComponent implements OnInit, OnChanges {
+export class BusFlightComponent implements OnInit {
 
   @Input() responseStations: any;
 
 
-  busFlights = [{
-    title: 'msk-je',
-    id: '1488',
-    titleOfBus: "Hyndai",
-    countsOfSeats: "60",
-  },
-  {
-    title: 'msk-je-nrg',
-    id: '1487',
-    titleOfBus: "Hyndai-lada",
-    countsOfSeats: "6005",
-  },
-  ]
+  // busFlights = [{
+  //   title: 'msk-je',
+  //   id: '1488',
+  //   titleOfBus: "Hyndai",
+  //   countsOfSeats: "60",
+  // },
+  // {
+  //   title: 'msk-je-nrg',
+  //   id: '1487',
+  //   titleOfBus: "Hyndai-lada",
+  //   countsOfSeats: "6005",
+  // },
+  // ]
 
   // responseStations = this.busFlights;
+
+  Seats: any;
   constructor(private BuyTicketListService: BuyTicketListService) { }
 
 
 
-  ngOnChanges() {
-    console.log(this.responseStations, 'responeStations from bus-flight component');
+  sendSeatsData() {
+    let cityTo = this.responseStations;
+    let cityFrom = this.responseStations
+    let date = this.responseStations
+    let id = this.responseStations
+
+    this.BuyTicketListService.checkSeats(cityFrom, cityTo, date, id)
+      .subscribe(
+        (response) => this.Seats = response,
+
+        (error) => console.log(error)
+      )
+    console.log(this.Seats);
   }
+
+
 
   ngOnInit() {
 
-
-
-    // console.log(this.stations, 'this.responseStations from busFlight component');
   }
 
 }

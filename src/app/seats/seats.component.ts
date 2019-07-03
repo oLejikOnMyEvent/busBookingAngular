@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-seats',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./seats.component.css']
 })
 export class SeatsComponent implements OnInit {
+  seatId: number;
 
-  constructor() { }
+
+  @Input() seats: any;
+
+  
+  constructor() {
+
+  }
+
+
 
   ngOnInit() {
+
   }
 
 }

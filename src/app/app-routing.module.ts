@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'buyticket-list', component: BuyticketListComponent, canActivate: [AuthGuardService] },
   { path: 'signup', component: SingupComponent },
   { path: 'signin', component: SinginComponent },
-  { path: 'seats', component: SeatsComponent, canActivate: [AuthGuardService] },
+  { path: 'seats/:id', component: SeatsComponent, canActivate: [AuthGuardService] },
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService] },
   { path: 'schedule', component: ScheduleComponent },
   { path: 'logout', component: LogoutComponent },

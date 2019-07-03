@@ -154,7 +154,8 @@ export class BuyticketListComponent implements OnInit {
 
     let sendCityFrom = JSON.stringify(this.form.value.myControl.id);
     let sendCityTo = JSON.stringify(this.form.value.myControlTo.id);
-    let sendDate = this.form.value.date.moment().format("YYYY-MM-DD");
+    let sendDate = this.form.value.date;
+    sendDate = moment().format("YYYY-MM-DD");
 
     if (sendCityFrom !== sendCityTo) {
       this.BuyTicketListService.checkFlights(sendCityFrom, sendCityTo, sendDate)

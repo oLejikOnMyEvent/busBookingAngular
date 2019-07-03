@@ -1,6 +1,6 @@
 <mat-card class="BusFlightCard">
-
-  
+  <!-- [responseStations]="responseStationsObj" -->
+  <h1> Выбретие место</h1>
     <mat-grid-list cols="6" rowHeight="2:1">
 <h1 style="display: flex; justify-content: center">  Москва  --- Махачкала </h1>
  
@@ -43,31 +43,14 @@
 </mat-card>
 
 <mat-card style="display: flex; justify-content: center">
-  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-    <mat-button-toggle value="bold">1</mat-button-toggle>
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" >
+    <mat-button-toggle value="bold" [disabled]="true">1</mat-button-toggle>
     <mat-button-toggle value="bold">2</mat-button-toggle>
     <mat-button-toggle value="bold">3</mat-button-toggle>
     <mat-button-toggle value="bold">4</mat-button-toggle>
         <mat-button-toggle value="bold">5</mat-button-toggle>
         <mat-button-toggle value="bold">6</mat-button-toggle>
-        <mat-button-toggle value="bold">7</mat-button-toggle>
-        <mat-button-toggle value="bold">8</mat-button-toggle>
-        <mat-button-toggle value="bold">9</mat-button-toggle>
-        <mat-button-toggle value="bold">10</mat-button-toggle>
-
-
-   
-          <mat-button-toggle value="bold">11</mat-button-toggle>
-          <mat-button-toggle value="bold">12</mat-button-toggle>
-          <mat-button-toggle value="bold">13</mat-button-toggle>
-          <mat-button-toggle value="bold">14</mat-button-toggle>
-              <mat-button-toggle value="bold">15</mat-button-toggle>
-              <mat-button-toggle value="bold">16</mat-button-toggle>
-              <mat-button-toggle value="bold">17</mat-button-toggle>
-              <mat-button-toggle value="bold">18</mat-button-toggle>
-              <mat-button-toggle value="bold">19</mat-button-toggle>
-              <mat-button-toggle value="bold">20</mat-button-toggle>
-            
+    
  
 
   </mat-button-toggle-group>
@@ -85,5 +68,6 @@
 <button mat-raised-button color="primary">Оплата</button>
 <a mat-raised-button routerLink="/checkout">Check out</a>
 <button mat-raised-button color="primary" disabled style="margin-left: 50px;" >Цена за билет 1500 </button>
-<button mat-raised-button color="primary" disabled style="margin-left: 50px;" > Номер рейса 1 </button>
+<button mat-raised-button color="primary" disabled style="margin-left: 50px;" > Номер рейса {{seatId}} </button>
 </mat-card>
+

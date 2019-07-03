@@ -4,6 +4,8 @@
         The actual rendered columns are set as a property on the row definition" -->
 
   <!-- Position Column -->
+
+  <h1> Выбретие место</h1>
   <ng-container matColumnDef="position">
     <th mat-header-cell *matHeaderCellDef> Номер Рейса </th>
     <td mat-cell *matCellDef="let element"> {{element.position}} </td>
@@ -39,4 +41,5 @@
 </table>
 
 <div style="display: flex; justify-content: center"> <a mat-raised-button routerLink="/buypage" color="primary" > Оплата </a>
-  <button mat-raised-button color="warn">Отмена</button></div>
+ 
+  <a mat-raised-button [routerLink]="['/seats', 2]"> Отмена</a>

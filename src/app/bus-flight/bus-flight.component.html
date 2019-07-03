@@ -1,4 +1,4 @@
-<mat-card class="BusFlightCard" *ngFor="let station of responseStations">
+<mat-card class="BusFlightCard" *ngFor="let station of responseStations; index as seatId">
 
   <h4 style="display: flex; justify-content: center" >Номер рейса {{  station.route }}</h4>
     <mat-grid-list cols="6" rowHeight="2:1">
@@ -36,8 +36,7 @@
     </mat-grid-list>
 
     <button mat-raised-button color="primary" >Купить за {{station.price}}</button>
-    <a mat-raised-button routerLink="/seats" >Buy test</a>
- 
+    <a mat-raised-button [routerLink]="['/seats', station.route]" (click)="sendSeatsData()"> Buy test {{station.route}}</a>
   
 
 </mat-card>

@@ -23,6 +23,10 @@ export class BuyTicketListService {
     return this.http.get(`http://192.168.2.11:8080/schedule?start=${cityFrom}&finish=${cityTo}&Date=${date}`)
   }
 
+  checkSeats(cityFrom, cityTo, date, id){
+    return this.http.get(`http://192.168.2.11:8080/schedule?start=${cityFrom}&finish=${cityTo}&Date=${date}&id${id}`)
+  }
+
 
 
 }
