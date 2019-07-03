@@ -42,15 +42,10 @@
    
 </mat-card>
 
-<mat-card style="display: flex; justify-content: center">
+<mat-card style="display: flex; justify-content: center" >
   <mat-button-toggle-group name="fontStyle" aria-label="Font Style" >
-    <mat-button-toggle value="bold" [disabled]="true">1</mat-button-toggle>
-    <mat-button-toggle value="bold">2</mat-button-toggle>
-    <mat-button-toggle value="bold">3</mat-button-toggle>
-    <mat-button-toggle value="bold">4</mat-button-toggle>
-        <mat-button-toggle value="bold">5</mat-button-toggle>
-        <mat-button-toggle value="bold">6</mat-button-toggle>
-    
+    <mat-button-toggle value="bold" *ngFor="let n of nums" (click)="numberOfPlace(n)">{{n}}</mat-button-toggle>
+  
  
 
   </mat-button-toggle-group>

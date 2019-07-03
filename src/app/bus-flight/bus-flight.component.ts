@@ -38,24 +38,24 @@ export class BusFlightComponent implements OnInit {
 
   // responseStations = this.busFlights;
 
-  Seats: any;
+  seats: any;
   constructor(private BuyTicketListService: BuyTicketListService) { }
 
 
 
   sendSeatsData() {
-    let cityTo = this.responseStations;
-    let cityFrom = this.responseStations
-    let date = this.responseStations
-    let id = this.responseStations
+    let cityTo = this.responseStations.start;
+    let cityFrom = this.responseStations.finish;
+    let date = this.responseStations.timeDeparture;
+    let id = this.responseStations.route
 
     this.BuyTicketListService.checkSeats(cityFrom, cityTo, date, id)
       .subscribe(
-        (response) => this.Seats = response,
+        (response) => this.seats = response,
 
         (error) => console.log(error)
       )
-    console.log(this.Seats);
+    console.log(this.seats);
   }
 
 

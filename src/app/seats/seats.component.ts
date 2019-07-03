@@ -9,10 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 export class SeatsComponent implements OnInit {
   seatId: number;
 
-
+  numberOfSeats: number = 20;
   @Input() seats: any;
 
-  
+  nums: any;
+
   constructor() {
 
   }
@@ -20,7 +21,11 @@ export class SeatsComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.nums = Array.from(Array(this.numberOfSeats), (x, i) => i+1)
   }
 
+  numberOfPlace(arg){
+      console.log(arg)
+  }
+  
 }
