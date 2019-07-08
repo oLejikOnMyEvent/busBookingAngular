@@ -64,6 +64,7 @@ export class BuyticketListComponent implements OnInit {
 
 
   responseStationsObj: any;
+  responseError: any;
 
 
   constructor(private BusSearchService: BusSearchService, private BuyTicketListService: BuyTicketListService) { }

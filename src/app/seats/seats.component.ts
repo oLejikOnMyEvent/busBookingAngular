@@ -2,6 +2,7 @@ import { element } from 'protractor';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { BusSearchService } from '../bus-search.service';
 
 @Component({
   selector: 'app-seats',
@@ -12,7 +13,7 @@ export class SeatsComponent implements OnInit {
   seatId: number;
 
   numberOfSeats;
-  @Input() seats: any;
+  @Input() responseStations: any;
 
   nums: any;
 
@@ -73,13 +74,14 @@ export class SeatsComponent implements OnInit {
   private id: number;
   private subscription: Subscription;
 
-  constructor(private activateRoute: ActivatedRoute) {
+  constructor(private activateRoute: ActivatedRoute,private BusSearchService: BusSearchService) {
     this.subscription = activateRoute.params.subscribe(params => this.id = params['id']);
   }
 
 
 
   ngOnInit() {
+
     this.numberOfSeats = this.bus[0].numberOfSeats;
 
     this.numberOfSeats = Array.from(Array(this.numberOfSeats), (x, i) => i + 1)

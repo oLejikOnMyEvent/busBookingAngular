@@ -1,6 +1,6 @@
 <mat-card class="BusFlightCard" *ngFor="let station of responseStations; index as seatId">
 
-  <h4 style="display: flex; justify-content: center" >Номер рейса {{  station.route }}</h4>
+  <h4 style="display: flex; justify-content: center" >Номер рейса {{  station.trip }}</h4>
     <mat-grid-list cols="6" rowHeight="2:1">
 <h1 style="display: flex; justify-content: center">  {{station.start}} -  {{station.finish}}  </h1>
  
@@ -35,8 +35,9 @@
   
     </mat-grid-list>
 
-    <button mat-raised-button color="primary" >Купить за {{station.price}}</button>
-    <a mat-raised-button [routerLink]="['/seats', station.route]" (click)="sendSeatsData()"> Buy test {{station.route}}</a>
+    <button mat-raised-button color="primary" >Купить за {{station.price | currency:"Рублей " }}</button>
+    <a mat-raised-button [routerLink]="['/seats', station.trip]" (click)="sendSeatsData()"> Buy test {{station.trip}}</a>
+    <button mat-raised-button color="primary" disabled style="margin-left: 50px;"   >Автобус {{station.bus.title}} Свободных Мест {{station.bus.seatsCount}}</button>
   
 
 </mat-card>
