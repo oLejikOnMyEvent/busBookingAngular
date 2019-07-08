@@ -72,7 +72,6 @@ export class BuyticketListComponent implements OnInit {
 
   ngOnInit() {
 
-
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 14);
 
@@ -143,7 +142,7 @@ export class BuyticketListComponent implements OnInit {
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.events.push(`${type}: ${event.value}`);
-    console.log(this.events);
+    console.log(this.events, this.form.value.myControl.date);
   }
 
 
@@ -155,7 +154,8 @@ export class BuyticketListComponent implements OnInit {
     let sendCityFrom = JSON.stringify(this.form.value.myControl.id);
     let sendCityTo = JSON.stringify(this.form.value.myControlTo.id);
     let sendDate = this.form.value.date;
-    sendDate = moment().format("YYYY-MM-DD");
+   sendDate =  moment(sendDate).format("YYYY-MM-DD");
+  
 
     if (sendCityFrom !== sendCityTo) {
       this.BuyTicketListService.checkFlights(sendCityFrom, sendCityTo, sendDate)

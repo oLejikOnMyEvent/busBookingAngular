@@ -92,20 +92,18 @@ export class SeatsComponent implements OnInit {
     }
     // this.freeNum = [...NewArr];
 
-   this.freeNum =  this.numberOfSeats.filter(value => -1 !== NewArr.indexOf(value))
-    
-   console.log(this.numberOfSeats.filter(value => -1 !== NewArr.indexOf(value)))
-   console.log(this.bus[0].numberOfSeats - this.freeNum.length)
+    this.freeNum = this.numberOfSeats.filter(value => -1 !== NewArr.indexOf(value))
+
 
   }
 
 
   numberOfPlace(n) {
-    console.log(n);
+    this.mass = n;
   }
 
   BookingSeat() {
-
+      
   }
 
 

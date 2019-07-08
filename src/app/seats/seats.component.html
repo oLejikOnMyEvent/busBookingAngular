@@ -57,13 +57,14 @@
 
 
 </mat-card>
-<span style="display: flex; justify-content: center"> вы выбрали место : {{mass}} </span> 
+<span style="display: flex; justify-content: center"> вы выбрали место {{mass}} </span> 
 
 
 <mat-card>
 <button mat-raised-button color="primary">Оплата</button>
 <a mat-raised-button routerLink="/checkout">Check out</a>
 <button mat-raised-button color="primary" disabled style="margin-left: 50px;"   >Цена за билет 1500 </button>
-<button mat-raised-button color="primary" style="margin-left: 50px;" (click)="BoockingSeat()" > Номер рейса  </button>
+<button mat-raised-button color="primary" disabled style="margin-left: 50px;"   > Свободных мест {{freeNum.length}} </button>
+<button mat-raised-button color="primary" style="margin-left: 50px;"> Номер рейса  </button>
 </mat-card>
 
