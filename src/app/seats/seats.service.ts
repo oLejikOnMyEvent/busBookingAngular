@@ -6,16 +6,16 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class BusFlightService implements OnInit {
+export class SeatsService {
 
-  searchFrom: string;
-  searchTo: string;
-  dataFlight: string;
+  constructor(private http: HttpClient) { }
 
 
-  constructor() { }
+  localUrl = ''
+  stableUrl = '';
 
-  ngOnInit(){
- 
-  }
+getFreeSeats(NumberOf){
+  return this.http.delete(http://localhost:3000/bookedFullSeats/);
+}
+
 }

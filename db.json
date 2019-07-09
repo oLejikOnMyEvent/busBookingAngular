@@ -6,6 +6,8 @@
       { "id": 1, "body": "some comment", "postId": 1 }
     ],
     "profile": { "name": "typicode" },
+
+
     "flight": [
         {
             "id": 14,
@@ -43,5 +45,62 @@
         {
             "id": 3, "flightFrom": "Moscow", "flightTo":"Dubnaa", "Time":" 09 :00", "Date" :"03.01.19", "Price": "500"
         }
+    ],
+
+    
+  "bookedSeat" : [{
+    "number": 9
+  },
+  {
+    "number": 3
+  },
+  {
+    "number": 6
+  },
+  {
+    "number": 5
+  },
+  {
+    "number": 10
+  },
+  {
+    "number": 14
+  }],
+
+  "bus" : [{
+    "id": 1,
+    "numberOfSeats": 20
+  },
+  {
+    "id": 1,
+    "numberOfSeats": 30
+  },
+  {
+    "id": 1,
+    "numberOfSeats": 30
+  }],
+  
+  "bookedFullSeats" : [
+    {
+      "id": 1,
+      "numberBooked": [
+        { "number": 1 },
+        { "number": 5 },
+        { "number": 9 },
+        { "number": 10 },
+        { "number": 12 },
+        { "number": 14 },
+        { "number": 4 },
+        { "number": 3 },
+        { "number": 2 }
+      ]
+    }
     ]
+
+
+
   }
+
+
+
+

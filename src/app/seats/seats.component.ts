@@ -15,27 +15,6 @@ export class SeatsComponent implements OnInit {
   numberOfSeats;
   @Input() responseStations: any;
 
-  nums: any;
-
-  seat = [{
-    number: 1,
-    isFree: false,
-  },
-  {
-    number: 3,
-    isFree: false,
-  },
-  {
-    number: 4,
-    isFree: false,
-  },
-  {
-    number: 5,
-    isFree: false,
-  },
-  ]
-
-
   bookedSeat = [{
     number: 9,
   },
@@ -68,6 +47,23 @@ export class SeatsComponent implements OnInit {
   ]
 
 
+  bookedFullSeats = [
+    {
+      id: 1,
+      numberBooked: [
+        { number: 1 },
+        { number: 5 },
+        { number: 9 },
+        { number: 10 },
+        { number: 12 },
+        { number: 14 },
+        { number: 4 },
+        { number: 3 },
+        { number: 2 }
+      ]
+    }
+  ]
+
   bookingSeats: any;
   mass: any;
   allFreeSeats: any;
@@ -79,7 +75,6 @@ export class SeatsComponent implements OnInit {
   }
 
 
-
   ngOnInit() {
 
     this.numberOfSeats = this.bus[0].numberOfSeats;
@@ -88,12 +83,14 @@ export class SeatsComponent implements OnInit {
 
     console.log(this.numberOfSeats);
 
-    let NewArr = []
-    this.bookedSeat.map(i => NewArr.push(i.number))
+    let newArr = [];
+    // this.bookedSeat.map(i => newArr.push(i.number));
 
-  
+    // this.freeNum = this.numberOfSeats.filter(value => -1 !== newArr.indexOf(value));
 
-    this.freeNum = this.numberOfSeats.filter(value => -1 !== NewArr.indexOf(value))
+    this.bookedFullSeats.filter(n => n.numberBooked.map(i => newArr.push(i.number)))
+    this.freeNum = newArr;
+
 
 
   }
