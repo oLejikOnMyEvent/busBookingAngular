@@ -74,7 +74,7 @@ export class SeatsComponent implements OnInit {
   private id: number;
   private subscription: Subscription;
 
-  constructor(private activateRoute: ActivatedRoute,private BusSearchService: BusSearchService) {
+  constructor(private activateRoute: ActivatedRoute, private BusSearchService: BusSearchService) {
     this.subscription = activateRoute.params.subscribe(params => this.id = params['id']);
   }
 
@@ -89,10 +89,9 @@ export class SeatsComponent implements OnInit {
     console.log(this.numberOfSeats);
 
     let NewArr = []
-    for (let i in this.bookedSeat) {
-      NewArr.push(this.bookedSeat[i].number)
-    }
-    // this.freeNum = [...NewArr];
+    this.bookedSeat.map(i => NewArr.push(i.number))
+
+  
 
     this.freeNum = this.numberOfSeats.filter(value => -1 !== NewArr.indexOf(value))
 
@@ -105,7 +104,7 @@ export class SeatsComponent implements OnInit {
   }
 
   BookingSeat() {
-      
+
   }
 
 
