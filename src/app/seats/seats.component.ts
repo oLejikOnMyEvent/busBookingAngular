@@ -102,6 +102,20 @@ export class SeatsComponent implements OnInit {
 
   BookingSeat() {
 
+//     let allSeats = [1,2,3,4,5,6,7,8,9];
+// let bookedSeats = [3,4,5];
+// let obj = []
+
+// function creatObj(arr1, arr2, obj){
+//          for( let i in arr1)
+//               obj.push(arr1 = {i})
+               
+            
+      
+//       console.log(obj)
+// }
+
+// creatObj(allSeats,bookedSeats,obj)
   }
 
 
