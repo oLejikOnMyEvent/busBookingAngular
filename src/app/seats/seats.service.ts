@@ -15,7 +15,7 @@ export class SeatsService {
   stableUrl = '';
 
 getFreeSeats(NumberOf){
-  return this.http.delete(http://localhost:3000/bookedFullSeats/);
+  // return this.http.delete(http://localhost:3000/bookedFullSeats/);
 }
 
 }

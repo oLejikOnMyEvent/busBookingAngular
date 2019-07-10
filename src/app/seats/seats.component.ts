@@ -60,6 +60,15 @@ export class SeatsComponent implements OnInit {
         { number: 4 },
         { number: 3 },
         { number: 2 }
+      ],
+      bookedSeats: [
+        1,
+        4,
+        5,
+        9,
+        10,
+        12,
+        14
       ]
     }
   ]
@@ -80,6 +89,40 @@ export class SeatsComponent implements OnInit {
     this.numberOfSeats = this.bus[0].numberOfSeats;
 
     this.numberOfSeats = Array.from(Array(this.numberOfSeats), (x, i) => i + 1)
+
+    console.log(this.bookedFullSeats[0].bookedSeats, 'booked seats')
+
+  
+
+//     let allSeats = [1,2,3,4,5,6,7,8,9];
+// let bookedSeats = [3,4,5];
+// let objFree = []
+// let objBooked = []
+
+// function creatObj(arr1, arr2, obj, obj2){
+//   (function (arr1,obj){
+//          for( let i in arr1)
+//               obj.push(arr1 = {i})
+    
+//       for(let i in obj){
+//         obj[i].isFree = false
+//       }
+    
+//   })(arr1,obj)
+   
+
+// for(let i in arr2){
+//   Object.keys(obj) === arr2[i]
+  
+// }
+//      return obj
+
+// }
+
+// creatObj(allSeats,bookedSeats,objFree, objBooked)
+
+
+
 
     console.log(this.numberOfSeats);
 
@@ -102,20 +145,6 @@ export class SeatsComponent implements OnInit {
 
   BookingSeat() {
 
-//     let allSeats = [1,2,3,4,5,6,7,8,9];
-// let bookedSeats = [3,4,5];
-// let obj = []
-
-// function creatObj(arr1, arr2, obj){
-//          for( let i in arr1)
-//               obj.push(arr1 = {i})
-               
-            
-      
-//       console.log(obj)
-// }
-
-// creatObj(allSeats,bookedSeats,obj)
   }
 
 

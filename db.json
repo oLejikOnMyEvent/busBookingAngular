@@ -93,6 +93,9 @@
         { "number": 4 },
         { "number": 3 },
         { "number": 2 }
+      ],
+      "bookedSeats":[
+        1,4,5,9,10,12,14
       ]
     }
     ]
