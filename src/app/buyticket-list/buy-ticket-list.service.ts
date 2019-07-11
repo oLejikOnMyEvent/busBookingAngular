@@ -13,7 +13,7 @@ export class BuyTicketListService {
   localUrlFlight = 'http://localhost:3000/flight';
   stableUrlFlight = 'http://192.168.2.11:8080/schedule?start=1&finish=2';
 
-  stableUrlFlightData = ''
+  stableUrlFlightData: any
 
   constructor(private http: HttpClient) { }
 
@@ -23,9 +23,10 @@ export class BuyTicketListService {
     return this.http.get(`http://192.168.2.11:8080/schedule?start=${cityFrom}&finish=${cityTo}&Date=${date}`)
   }
 
-  checkSeats(cityFrom, cityTo, date, id){
-    return this.http.get(`http://192.168.2.11:8080/schedule?start=${cityFrom}&finish=${cityTo}&Date=${date}&id${id}`)
-  }
+  //  checkSeats(cityFrom, cityTo, date){
+  //   return this.stableUrlFlightData = this.http.get(`http://192.168.2.11:8080/schedule?start=${cityFrom}&finish=${cityTo}&Date=${date}`)
+    
+  // }
 
 
 

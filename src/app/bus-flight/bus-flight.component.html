@@ -36,7 +36,7 @@
     </mat-grid-list>
 
     <button mat-raised-button color="primary" >Купить за {{station.price | currency:"Рублей " }}</button>
-    <a mat-raised-button [routerLink]="['/seats', station.trip]" (click)="sendSeatsData()"> Buy test {{station.trip}}</a>
+    <a mat-raised-button [routerLink]="['/seats', station.trip]" (click)="getSeats(station.trip, station.start, station.finish, station.timeDeparture )"> Buy test {{station.trip}}</a>
     <button mat-raised-button color="primary" disabled style="margin-left: 50px;"   >Автобус {{station.bus.title}} Свободных Мест {{station.bus.seatsCount}}</button>
   
 

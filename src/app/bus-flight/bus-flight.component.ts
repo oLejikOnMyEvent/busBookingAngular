@@ -3,6 +3,8 @@ import { BuyticketListComponent } from '../buyticket-list/buyticket-list.compone
 import { BuyTicketListService } from '../buyticket-list/buy-ticket-list.service';
 
 
+import * as moment from 'moment';
+
 // interface busFlight{
 //   title: string;
 //   id: number;
@@ -43,25 +45,30 @@ export class BusFlightComponent implements OnInit {
 
 
 
-  sendSeatsData() {
-    let cityTo = this.responseStations.start;
-    let cityFrom = this.responseStations.finish;
-    let date = this.responseStations.timeDeparture;
-    let id = this.responseStations.route
+  // sendSeatsData() {
+  //   let cityTo = this.responseStations.start;
+  //   let cityFrom = this.responseStations.finish;
+  //   let date = this.responseStations.timeDeparture;
+  //   let id = this.responseStations.route
 
-    this.BuyTicketListService.checkSeats(cityFrom, cityTo, date, id)
-      .subscribe(
-        (response) => this.seats = response,
+  //   this.BuyTicketListService.checkSeats(cityFrom, cityTo, date, id)
+  //     .subscribe(
+  //       (response) => this.seats = response,
 
-        (error) => console.log(error)
-      )
-    console.log(this.seats);
-  }
+  //       (error) => console.log(error)
+  //     )
+  //   console.log(this.seats);
+  // }
 
 
 
   ngOnInit() {
 
+  }
+
+  getSeats(stationTrip, stationStart, stationFinish, stationDate){
+    stationDate = moment(stationDate).format("YYYY-MM-DD");
+      console.log(stationTrip,stationStart, stationFinish, stationDate );
   }
 
 }

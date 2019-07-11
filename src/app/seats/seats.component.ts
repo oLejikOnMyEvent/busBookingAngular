@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BusSearchService } from '../bus-search.service';
+import { type } from 'os';
 
 @Component({
   selector: 'app-seats',
@@ -51,15 +52,17 @@ export class SeatsComponent implements OnInit {
     {
       id: 1,
       numberBooked: [
-        { number: 1 },
-        { number: 5 },
-        { number: 9 },
-        { number: 10 },
-        { number: 12 },
-        { number: 14 },
-        { number: 4 },
-        { number: 3 },
-        { number: 2 }
+        { number: 1, isFree: true },
+        { number: 2, isFree: true },
+        { number: 3, isFree: true },
+        { number: 4, isFree: false },
+        { number: 5, isFree: true },
+        { number: 6, isFree: true },
+        { number: 7, isFree: true },
+        { number: 8, isFree: false },
+        { number: 9, isFree: true },
+        { number: 10, isFree: true },
+        { number: 11, isFree: true }
       ],
       bookedSeats: [
         1,
@@ -90,41 +93,38 @@ export class SeatsComponent implements OnInit {
 
     this.numberOfSeats = Array.from(Array(this.numberOfSeats), (x, i) => i + 1)
 
-    console.log(this.bookedFullSeats[0].bookedSeats, 'booked seats')
-
-  
-
-//     let allSeats = [1,2,3,4,5,6,7,8,9];
-// let bookedSeats = [3,4,5];
-// let objFree = []
-// let objBooked = []
-
-// function creatObj(arr1, arr2, obj, obj2){
-//   (function (arr1,obj){
-//          for( let i in arr1)
-//               obj.push(arr1 = {i})
-    
-//       for(let i in obj){
-//         obj[i].isFree = false
-//       }
-    
-//   })(arr1,obj)
-   
-
-// for(let i in arr2){
-//   Object.keys(obj) === arr2[i]
-  
-// }
-//      return obj
-
-// }
-
-// creatObj(allSeats,bookedSeats,objFree, objBooked)
+    console.log(this.bookedFullSeats[0].bookedSeats, 'booked seats', this.bookedFullSeats[0].numberBooked )
 
 
 
+    //     let allSeats = [1,2,3,4,5,6,7,8,9];
+    // let bookedSeats = [3,4,5];
+    // let objFree = []
+    // let objBooked = []
 
-    console.log(this.numberOfSeats);
+    // function creatObj(arr1, arr2, obj, obj2){
+    //   (function (arr1,obj){
+    //          for( let i in arr1)
+    //               obj.push(arr1 = {i})
+
+    //       for(let i in obj){
+    //         obj[i].isFree = false
+    //       }
+
+    //   })(arr1,obj)
+
+
+    // for(let i in arr2){
+    //   Object.keys(obj) === arr2[i]
+
+    // }
+    //      return obj
+
+    // }
+
+    // creatObj(allSeats,bookedSeats,objFree, objBooked)
+
+
 
     let newArr = [];
     // this.bookedSeat.map(i => newArr.push(i.number));
@@ -134,13 +134,17 @@ export class SeatsComponent implements OnInit {
     this.bookedFullSeats.filter(n => n.numberBooked.map(i => newArr.push(i.number)))
     this.freeNum = newArr;
 
+  }
 
+
+  checkFreeSeat(n) {
 
   }
 
 
+
   numberOfPlace(n) {
-    this.mass = n;
+    this.mass = n
   }
 
   BookingSeat() {

@@ -25,7 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BusFlightComponent } from './bus-flight/bus-flight.component';
 import { BusHistoryComponent } from './bus-history/bus-history.component';
-import { BusSeatsComponent } from './bus-seats/bus-seats.component';
+
 
 
 import { SingupComponent } from './auth/singup/singup.component';
@@ -49,7 +49,6 @@ import { BuyticketListComponent } from './buyticket-list/buyticket-list.componen
     routingComponents,
     BusFlightComponent,
     BusHistoryComponent,
-    BusSeatsComponent,
     SingupComponent,
     SinginComponent,
     SeatsComponent,
