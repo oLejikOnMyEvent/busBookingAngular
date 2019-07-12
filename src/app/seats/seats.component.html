@@ -1,55 +1,129 @@
 <mat-card class="BusFlightCard">
   <!-- [responseStations]="responseStationsObj" -->
   <h1> Выбретие место на рейс номер {{id}}</h1>
-    <mat-grid-list cols="6" rowHeight="2:1">
-<h1 style="display: flex; justify-content: center">  Москва  --- Махачкала </h1>
- 
+  <mat-grid-list cols="6" rowHeight="2:1">
+    <h1 style="display: flex; justify-content: center"> Москва --- Махачкала </h1>
 
-</mat-grid-list>
-
-<div style="display: flex; justify-content: center">  <h4> 07:00 - 05:34</h4> </div>
-  <span  style="display: flex; justify-content: center"> время в пути</span>
-
-  <mat-grid-list cols="8" rowHeight="2:1">
-    <mat-grid-tile colspan='4'>  <h4>
-   01.01.2019
-     </h4>
-     
-     </mat-grid-tile>
-    
-    
-     <mat-grid-tile colspan='4'>  <h4> 02.01.2019 </h4></mat-grid-tile>
 
   </mat-grid-list>
 
- 
+  <div style="display: flex; justify-content: center">
+    <h4> 07:00 - 05:34</h4>
+  </div>
+  <span style="display: flex; justify-content: center"> время в пути</span>
 
-  <mat-grid-list cols="8" rowHeight="3:1" >
-      <mat-grid-tile colspan='4'>  <span>
-    отправление
+  <mat-grid-list cols="8" rowHeight="2:1">
+    <mat-grid-tile colspan='4'>
+      <h4>
+        01.01.2019
+      </h4>
+
+    </mat-grid-tile>
+
+
+    <mat-grid-tile colspan='4'>
+      <h4> 02.01.2019 </h4>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+
+
+  <mat-grid-list cols="8" rowHeight="3:1">
+    <mat-grid-tile colspan='4'> <span>
+        отправление
       </span>
-       </mat-grid-tile>
-      
-      
-       <mat-grid-tile colspan='4'>  <span> прибытие </span></mat-grid-tile>
-  
-    </mat-grid-list>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile colspan='4'> <span> прибытие </span></mat-grid-tile>
+
+  </mat-grid-list>
 
 
 
+  <button (click)="showSeats()" style="display: flex; justify-content: center"> Выберите место </button>
 
 
-   
 </mat-card>
 
-<mat-card style="display: flex; justify-content: center" >
-  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" >
+
+
+<mat-card style="display: flex; justify-content: center" *ngIf="!showAllSeats">
+
+  <!-- <mat-button-toggle-group name="fontStyle" aria-label="Font Style" >
     <mat-button-toggle value="bold" *ngFor="let n of this.bookedFullSeats[0].numberBooked; let i = index" (click)="numberOfPlace(n.number)" [disabled]="!n.isFree" #seatsToggleButtons class="seatsToggleButtons" >{{n.number}}</mat-button-toggle>
+  </mat-button-toggle-group> -->
 
- 
 
-  </mat-button-toggle-group>
+<div class="UpperSector">
+  <div class="sectorOne" style="margin-left:20px ">
+    <div class="SectoreOneUp">
+      <mat-button-toggle value="bold" *ngFor="let n of this.bookedFullSeats[0].numberBooked; let i = index"
+        (click)="numberOfPlace(n.number)" [disabled]="!n.isFree" #seatsToggleButtons class="seatsToggleButtons" (click)="showSeats()"> 
+        0{{n.number}}</mat-button-toggle>
+    </div>
+
+    <div class="SectoreOneDown">
+      <mat-button-toggle value="bold" *ngFor="let n of this.bookedFullSeats[0].numberBooked; let i = index"
+        (click)="numberOfPlace(n.number + 19)" [disabled]="!n.isFree" #seatsToggleButtons class="seatsToggleButtons"  (click)="showSeats()">
+        {{n.number+19}}</mat-button-toggle>
+    </div>
+
+  </div>
+
+  <div class="sectorTwo" style="margin-left:20px">
+    <div class="SectoreTwoUp">
+      <mat-button-toggle value="bold" *ngFor="let n of this.bookedFullSeats[0].numberBooked; let i = index"
+        (click)="numberOfPlace(n.number +39)" [disabled]="!n.isFree" #seatsToggleButtons class="seatsToggleButtons" style="margin-top: 30px;" (click)="showSeats()">
+        {{n.number+39}}</mat-button-toggle>
+    </div>
+
+
+    <div class="SectoreTwoDown">
+      <mat-button-toggle value="bold" *ngFor="let n of this.bookedFullSeats[0].numberBooked; let i = index"
+        (click)="numberOfPlace(n.number + 69)" [disabled]="!n.isFree" #seatsToggleButtons class="seatsToggleButtons" (click)="showSeats()">
+        {{n.number+69}}</mat-button-toggle>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="DownSector">
+    <div class="sectorOne">
+      <div class="SectoreOneUp">
+        <mat-button-toggle value="bold" *ngFor="let n of this.bookedFullSeats[0].numberBooked; let i = index"
+          (click)="numberOfPlace(n.number)" [disabled]="!n.isFree" #seatsToggleButtons class="seatsToggleButtons" (click)="showSeats()">
+          {{n.number+9}}</mat-button-toggle>
+      </div>
   
+      <div class="SectoreOneDown">
+        <mat-button-toggle value="bold" *ngFor="let n of this.bookedFullSeats[0].numberBooked; let i = index"
+          (click)="numberOfPlace(n.number + 29)" [disabled]="!n.isFree" #seatsToggleButtons class="seatsToggleButtons" (click)="showSeats()">
+          {{n.number+29}}</mat-button-toggle>
+      </div>
+  
+    </div>
+  
+    <div class="sectorTwo" >
+      <div class="SectoreTwoUp">
+        <mat-button-toggle value="bold" *ngFor="let n of this.bookedFullSeats[0].numberBooked; let i = index"
+          (click)="numberOfPlace(n.number +49)" [disabled]="!n.isFree" #seatsToggleButtons class="seatsToggleButtons" style="margin-top: 30px;" (click)="showSeats()">
+          {{n.number+49}}</mat-button-toggle>
+      </div>
+  
+  
+      <div class="SectoreTwoDown">
+        <mat-button-toggle value="bold" *ngFor="let n of this.bookedFullSeats[0].numberBooked; let i = index"
+          (click)="numberOfPlace(n.number +79)" [disabled]="!n.isFree" #seatsToggleButtons class="seatsToggleButtons" (click)="showSeats()">
+          {{n.number+79}}</mat-button-toggle>
+      </div>
+  
+    </div>
+  </div>
+
+
 
 
 
@@ -57,14 +131,13 @@
 
 
 </mat-card>
-<span style="display: flex; justify-content: center"> вы выбрали место {{mass}} </span> 
+<h2 style="display: flex; justify-content: center"> вы выбрали место  <i style="margin-left: 5px; color: purple"> {{ mass }} </i> </h2>
 
 
 <mat-card>
-<button mat-raised-button color="primary">Оплата</button>
-<a mat-raised-button routerLink="/checkout">Check out</a>
-<button mat-raised-button color="primary" disabled style="margin-left: 20px;"   >Цена за билет 1500 </button>
-<!-- <button mat-raised-button color="primary" disabled style="margin-left: 20px;"   > Свободных мест {{freeNum.length}} </button> -->
-<a mat-raised-button routerLink="/buyticket-list" style="margin-left: 20px;" > Отмена</a>
+  <button mat-raised-button color="primary">Оплата</button>
+  <a mat-raised-button routerLink="/checkout">Check out</a>
+  <button mat-raised-button color="primary" disabled style="margin-left: 20px;">Цена за билет 1500 </button>
+  <!-- <button mat-raised-button color="primary" disabled style="margin-left: 20px;"   > Свободных мест {{freeNum.length}} </button> -->
+  <a mat-raised-button routerLink="/buyticket-list" style="margin-left: 20px;"> Отмена</a>
 </mat-card>
-

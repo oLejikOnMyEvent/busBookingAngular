@@ -1,9 +1,10 @@
 import { element } from 'protractor';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, from } from 'rxjs';
 import { BusSearchService } from '../bus-search.service';
 import { type } from 'os';
+import {SeatsService} from './seats.service';
 
 @Component({
   selector: 'app-seats',
@@ -13,8 +14,9 @@ import { type } from 'os';
 export class SeatsComponent implements OnInit {
   seatId: number;
 
+  showAllSeats = true;
   numberOfSeats;
-  @Input() responseStations: any;
+  @Input() seats: any;
 
   bookedSeat = [{
     number: 9,
@@ -58,11 +60,10 @@ export class SeatsComponent implements OnInit {
         { number: 4, isFree: false },
         { number: 5, isFree: true },
         { number: 6, isFree: true },
-        { number: 7, isFree: true },
+        { number: 0, isFree: true },
         { number: 8, isFree: false },
         { number: 9, isFree: true },
-        { number: 10, isFree: true },
-        { number: 11, isFree: true }
+       
       ],
       bookedSeats: [
         1,
@@ -79,10 +80,12 @@ export class SeatsComponent implements OnInit {
   bookingSeats: any;
   mass: any;
   allFreeSeats: any;
+
+ 
   private id: number;
   private subscription: Subscription;
 
-  constructor(private activateRoute: ActivatedRoute, private BusSearchService: BusSearchService) {
+  constructor(private activateRoute: ActivatedRoute, private BusSearchService: BusSearchService, private SeatsService: SeatsService) {
     this.subscription = activateRoute.params.subscribe(params => this.id = params['id']);
   }
 
@@ -134,6 +137,8 @@ export class SeatsComponent implements OnInit {
     this.bookedFullSeats.filter(n => n.numberBooked.map(i => newArr.push(i.number)))
     this.freeNum = newArr;
 
+    console.log(this.SeatsService.showData, 'dataFrom seats component');
+
   }
 
 
@@ -151,6 +156,11 @@ export class SeatsComponent implements OnInit {
 
   }
 
-
+showSeats(){
+  if(this.showAllSeats){
+    this.showAllSeats = false
+  } else this.showAllSeats = true
+ 
+}
 
 }
