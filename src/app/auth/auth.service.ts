@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpRequest, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
 import { BehaviorSubject, Observable, of } from 'rxjs';
@@ -16,7 +16,10 @@ import {User } from './User';
 })
 export class AuthService {
 
- 
+  User = {
+    username : "rafa",
+    password : "mendes"
+  }
 
   constructor(private http: HttpClient
     ) {
@@ -27,66 +30,48 @@ export class AuthService {
 
 
 
- auth(username, password):Observable<any> {
+ auth(username1, password1) {
       
-      // let headers =  {headers: new  HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded'})};
-      // headers.append("Authorization", "Basic " + btoa(username + ":" + password)); 
-    
-      // this.http.get('http://192.168.2.11:8080/login', {})
-      // .subscribe(
-      //       data => this.example = data.text(),
-      //       err => this.logError(err.text()),
-      //       () => console.log('Request Complete')
-      //   );
+   
+    const params = new HttpHeaders({Authorization: 'Basic ' +  btoa(username1 + ":" + password1)})
     
 
+    //  let headNew = new HttpHeaders(btoa(username1 + ":" + password1))
 
-    // console.log(username, typeof username);
-    // console.log(password, typeof password);
-    let headers = new HttpHeaders({Authorization: 'Basic ' +  btoa(username + ":" + password)})
 
-    // const headerOptions = {
+    // const httpOptions = {
     //   headers: new HttpHeaders({
-    //     'Content-Type':  'application/json',
-    //     'Authorization': 'Basic ' + btoa(username + ':' + password)
+    //     'Content-Type':  'application/x-www-form-urlencoded',
+    //     'Authorization': 'Basic' + btoa(username1 + ":" + password1)
     //   })
     // };
 
+    // let User ={
+    //   username: "rafa",
+    //   password: "mendes"
+    // }
+    
+    //let head = new Headers({'access-control-allow-origin': '*'});
+    // let options = new RequestOptions({})
+  
+    //  console.log(this.http.post('http://192.168.2.11:8080/login', User, httpOptions),httpOptions );
 
-    // let head = new Headers();
-    // head.append('Accept', 'application/json')
-    // let base64 = btoa(username + ':' + password);
-    // head.append("Authorization", "Basic " + base64);
-
-    // let options = new RequestOptions()
-    // options.head = head
-
-    // let headerss = new FormData()
-    // headerss.append("username", username),
-    //   headerss.append("password", password)
-
-    // const params = new HttpParams({
+    //  const params = new HttpParams({
     //   fromObject: {
-    //     username: username,
-    //     password: password
+    //     username: username1,
+    //     password: password1
     //   }
     // });
 
-
-
-    //let head = new Headers({'access-control-allow-origin': '*'});
-    // let options = new RequestOptions({})
-
-    return this.http.post('http://localhost:4200/login', headers )
+    return this.http.get('http://localhost:4200/login', {params})
     .pipe(
       map(  userData => {
-
-        if(userData) {
-        sessionStorage.setItem('username', JSON.stringify(username));}
+     let authStr = 'Basic ' +  btoa(username1 + ":" + password1);
+     sessionStorage.setItem('basicauth', authStr)
         return userData;
       })
     )
-
+   
   }
 
 

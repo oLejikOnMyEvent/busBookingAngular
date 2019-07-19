@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { NgModule,  } from '@angular/core';
 
-import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -37,7 +37,7 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { HeaderDirective } from './header/header.directive';
 import { BuyingpageComponent } from './buyingpage/buyingpage.component';
 import { BuyticketListComponent } from './buyticket-list/buyticket-list.component';
-
+import { BasicAuthHttpInterceptorService} from './auth/basic-auth-http-interceptor.service'
 
 
 
@@ -71,7 +71,11 @@ import { BuyticketListComponent } from './buyticket-list/buyticket-list.componen
     HttpClientModule,
     HttpClientJsonpModule,
   ],
-  providers: [],
+  providers: [
+    {  
+      provide:HTTP_INTERCEPTORS, useClass:BasicAuthHttpInterceptorService, multi:true 
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

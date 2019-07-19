@@ -21,16 +21,16 @@ export class SinginComponent implements OnInit {
   // }
 
     error = " "
-  email = new FormControl('', [Validators.required, Validators.email]);
+  // email = new FormControl('', [Validators.required, Validators.email]);
 
 
-  getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-      this.email.hasError('email') ? 'Not a valid email' :
-        '';
-  }
+  // getErrorMessage() {
+  //   return this.email.hasError('required') ? 'You must enter a value' :
+  //     this.email.hasError('email') ? 'Not a valid email' :
+  //       '';
+  // }
 
-  hide = true;
+  // hide = true;
 
 
   constructor(private router: Router,
@@ -42,7 +42,7 @@ export class SinginComponent implements OnInit {
 
 
   checkLogin() {
-    this.loginservice.auth(this.username, this.password)
+    (this.loginservice.auth(this.username, this.password)
     .subscribe(
         data => {
           console.log(data)
@@ -54,7 +54,7 @@ export class SinginComponent implements OnInit {
           error = console.log(error, 'from service');
           this.invalidLogin = true
         }
-      )
+      ))
     
   }
 }
