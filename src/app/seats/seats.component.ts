@@ -1,10 +1,16 @@
+import { BuyTicketListService } from './../buyticket-list/buy-ticket-list.service';
 import { element } from 'protractor';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription, from } from 'rxjs';
+import { Subscription, from, Subscribable } from 'rxjs';
 import { BusSearchService } from '../bus-search.service';
 import { type } from 'os';
-import {SeatsService} from './seats.service';
+import { SeatsService } from './seats.service';
+import { BehaviorSubject } from 'rxjs';
+
+
+
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-seats',
@@ -63,7 +69,7 @@ export class SeatsComponent implements OnInit {
         { number: 0, isFree: true },
         { number: 8, isFree: false },
         { number: 9, isFree: true },
-       
+
       ],
       bookedSeats: [
         1,
@@ -81,22 +87,43 @@ export class SeatsComponent implements OnInit {
   mass: any;
   allFreeSeats: any;
 
- 
+  dataFromService: any;
   private id: number;
+  private from: number;
+  private to: number;
   private subscription: Subscription;
+  private cityFrom: Subscription;
+  private cityTo: Subscription;
+  constructor(private activateRoute: ActivatedRoute, private BusSearchService: BusSearchService, private SeatsService: SeatsService, private BuyTicketListService: BuyTicketListService) {
 
-  constructor(private activateRoute: ActivatedRoute, private BusSearchService: BusSearchService, private SeatsService: SeatsService) {
     this.subscription = activateRoute.params.subscribe(params => this.id = params['id']);
+    this.cityFrom = activateRoute.params.subscribe(params => this.from = params['from']);
+    this.cityTo = activateRoute.params.subscribe(params => this.to = params['to'])
+
   }
 
 
-  ngOnInit() {
 
+
+  ngOnInit() {
+    //console.log(this.id, this.from, this.to, 'id from to');
+    // console.log(this.fo)
+
+    this.BuyTicketListService.checkSeats(this.from, this.to)
+      .subscribe(
+        (response) => {
+          this.allFreeSeats = response;
+          console.log(this.allFreeSeats, 'allFreeSeats');
+        },
+        error => console.log(error)
+      )
+
+    //console.log(this.SeatsService.showData, 'dataFrom seats component');
     this.numberOfSeats = this.bus[0].numberOfSeats;
 
     this.numberOfSeats = Array.from(Array(this.numberOfSeats), (x, i) => i + 1)
 
-    console.log(this.bookedFullSeats[0].bookedSeats, 'booked seats', this.bookedFullSeats[0].numberBooked )
+    // console.log(this.bookedFullSeats[0].bookedSeats, 'booked seats', this.bookedFullSeats[0].numberBooked)
 
 
 
@@ -137,9 +164,12 @@ export class SeatsComponent implements OnInit {
     this.bookedFullSeats.filter(n => n.numberBooked.map(i => newArr.push(i.number)))
     this.freeNum = newArr;
 
-    console.log(this.SeatsService.showData, 'dataFrom seats component');
+    this.SeatsService.showData = this.dataFromService;
+
+
 
   }
+
 
 
   checkFreeSeat(n) {
@@ -152,15 +182,34 @@ export class SeatsComponent implements OnInit {
     this.mass = n
   }
 
+
+
   BookingSeat() {
+    this.BuyTicketListService.getCookie()
+    .subscribe(
+      response => console.log(response),
+      error => console.log(error)
+      
+    )
+    // let date = this.allFreeSeats.timeDeparture
+    // date = moment(date).format("YYYY-MM-DD");
+    // this.BuyTicketListService.postBookedSeat(this.mass, this.allFreeSeats.tripNum, this.allFreeSeats.stationStart.id, this.allFreeSeats.stationFinish.id, date, this.allFreeSeats.price)
+    //   .subscribe(
+    //     response => console.log(response),
+    //     error => console.log(error)
+    //   )
 
   }
 
-showSeats(){
-  if(this.showAllSeats){
-    this.showAllSeats = false
-  } else this.showAllSeats = true
- 
-}
+  showSeats() {
+    if (this.showAllSeats) {
+      this.showAllSeats = false
+    } else this.showAllSeats = true
+
+
+    // this.BuyTicketListService.checkSeats(){
+
+    // }
+  }
 
 }

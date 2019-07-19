@@ -23,8 +23,7 @@ getFreeSeats(NumberOf){
 
 
 getDataSeats(data){
-  this.showData = data
-  console.log(data);
+  return this.showData = data
 }
 
 }

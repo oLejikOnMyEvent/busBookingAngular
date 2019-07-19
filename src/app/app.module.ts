@@ -38,7 +38,7 @@ import { HeaderDirective } from './header/header.directive';
 import { BuyingpageComponent } from './buyingpage/buyingpage.component';
 import { BuyticketListComponent } from './buyticket-list/buyticket-list.component';
 
-// import{ MatMomentDateModule} from ''
+
 
 
 @NgModule({

@@ -1,28 +1,29 @@
-<mat-card class="BusFlightCard">
-  <!-- [responseStations]="responseStationsObj" -->
+<mat-card class="BusFlightCard" *ngIf="allFreeSeats">
+
   <h1> Выбретие место на рейс номер {{id}}</h1>
   <mat-grid-list cols="6" rowHeight="2:1">
-    <h1 style="display: flex; justify-content: center"> Москва --- Махачкала </h1>
+    <h1 style="display: flex; justify-content: center">
+      {{allFreeSeats.stationStart.title}}-{{allFreeSeats.stationFinish.title}} </h1>
 
 
   </mat-grid-list>
 
   <div style="display: flex; justify-content: center">
-    <h4> 07:00 - 05:34</h4>
+    <h4> {{allFreeSeats.timeArrival | date:'hh:mm' }} - {{allFreeSeats.timeDeparture | date:'hh:mm'}}</h4>
   </div>
   <span style="display: flex; justify-content: center"> время в пути</span>
 
   <mat-grid-list cols="8" rowHeight="2:1">
     <mat-grid-tile colspan='4'>
       <h4>
-        01.01.2019
+        {{allFreeSeats.timeDeparture | date }}
       </h4>
 
     </mat-grid-tile>
 
 
     <mat-grid-tile colspan='4'>
-      <h4> 02.01.2019 </h4>
+      <h4> {{allFreeSeats.timeArrival |  date}} </h4>
     </mat-grid-tile>
 
   </mat-grid-list>
@@ -56,7 +57,7 @@
   </mat-button-toggle-group> -->
 
 
-<div class="UpperSector">
+  <!-- <div class="UpperSector">
   <div class="sectorOne" style="margin-left:20px ">
     <div class="SectoreOneUp">
       <mat-button-toggle value="bold" *ngFor="let n of this.bookedFullSeats[0].numberBooked; let i = index"
@@ -121,6 +122,12 @@
       </div>
   
     </div>
+  </div> -->
+
+  <div class="SectoreOneUp">
+    <mat-button-toggle value="bold" *ngFor="let n of allFreeSeats.freeSeats" (click)="numberOfPlace(n)"
+      #seatsToggleButtons class="seatsToggleButtons" (click)="showSeats()">
+      {{n}}</mat-button-toggle>
   </div>
 
 
@@ -128,16 +135,15 @@
 
 
 
-
-
 </mat-card>
-<h2 style="display: flex; justify-content: center"> вы выбрали место  <i style="margin-left: 5px; color: purple"> {{ mass }} </i> </h2>
+<h2 style="display: flex; justify-content: center"> вы выбрали место <i style="margin-left: 5px; color: purple">
+    {{ mass }} </i> </h2>
 
 
 <mat-card>
-  <button mat-raised-button color="primary">Оплата</button>
+  <button mat-raised-button color="primary" (click)="BookingSeat()">Оплата</button>
   <a mat-raised-button routerLink="/checkout">Check out</a>
-  <button mat-raised-button color="primary" disabled style="margin-left: 20px;">Цена за билет 1500 </button>
+  <button mat-raised-button color="primary" disabled style="margin-left: 20px;" *ngIf=allFreeSeats>Цена за билет {{allFreeSeats.price}} </button>
   <!-- <button mat-raised-button color="primary" disabled style="margin-left: 20px;"   > Свободных мест {{freeNum.length}} </button> -->
   <a mat-raised-button routerLink="/buyticket-list" style="margin-left: 20px;"> Отмена</a>
 </mat-card>
