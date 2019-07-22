@@ -185,19 +185,13 @@ export class SeatsComponent implements OnInit {
 
 
   BookingSeat() {
-    this.BuyTicketListService.getCookie()
-    .subscribe(
-      response => console.log(response),
-      error => console.log(error)
-      
-    )
-    // let date = this.allFreeSeats.timeDeparture
-    // date = moment(date).format("YYYY-MM-DD");
-    // this.BuyTicketListService.postBookedSeat(this.mass, this.allFreeSeats.tripNum, this.allFreeSeats.stationStart.id, this.allFreeSeats.stationFinish.id, date, this.allFreeSeats.price)
-    //   .subscribe(
-    //     response => console.log(response),
-    //     error => console.log(error)
-    //   )
+    let date = this.allFreeSeats.timeDeparture
+    date = moment(date).format("YYYY-MM-DD");
+    this.BuyTicketListService.postBookedSeat(this.mass, this.allFreeSeats.tripNum, this.allFreeSeats.stationStart.id, this.allFreeSeats.stationFinish.id, date, this.allFreeSeats.price)
+      .subscribe(
+        response => console.log(response),
+        error => console.log(error)
+      )
 
   }
 

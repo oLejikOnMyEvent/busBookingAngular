@@ -40,28 +40,28 @@ export class BuyTicketListService {
 
 
   checkSeats(cityFrom, cityTo) {
-    return this.http.get(`http://192.168.2.11:8080/booking?schedStartId=${cityFrom}&schedFinishId=${cityTo}`);
+    return this.http.get(`http://localhost:4200/booking?schedStartId=${cityFrom}&schedFinishId=${cityTo}`);
   }
 
-  getCookie(){
-    const user = {
-      username: "rafa",
-      password: "mendes"
-    }
-    return this.http.post(`http://192.168.2.11:8080/login`, user )
-  }
-
-  // postBookedSeat(seatNumber, tripNumber, stationStart, stationFinish, date, price){
-  //     const body = {
-  //       seatNumber,
-  //       tripNumber,
-  //       stationStart,
-  //       stationFinish,
-  //       date,
-  //       price
-  //     }
-  //    return this.http.post(`http://192.168.2.11:8080/booking/`, body)
+  // getCookie(){
+  //   const user = {
+  //     username: "rafa",
+  //     password: "mendes"
+  //   }
+  //   return this.http.get(`http://192.168.2.11:8080/secured`, user )
   // }
+
+  postBookedSeat(seatNumber, tripNumber, stationStart, stationFinish, date, price){
+      const body = {
+        seatNumber,
+        tripNumber,
+        stationStart,
+        stationFinish,
+        date,
+        price
+      }
+     return this.http.post(`http://localhost:4200/booking/`, body)
+  }
 
 
 }

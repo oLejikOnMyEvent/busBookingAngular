@@ -2,13 +2,13 @@ import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { User } from './User';
+// import { User } from './User';
 
-// export class User {
-//   constructor(
-//     public status: string
-//   ) { }
-// }
+export class User {
+  constructor(
+    public status: string
+  ) { }
+}
 
 
 @Injectable({
@@ -16,10 +16,10 @@ import { User } from './User';
 })
 export class AuthService {
 
-  User = {
-    username: "rafa",
-    password: "mendes"
-  }
+  // User = {
+  //   username: "rafa",
+  //   password: "mendes"
+  // }
 
   constructor(private http: HttpClient
   ) {
@@ -27,6 +27,7 @@ export class AuthService {
 
   }
 
+  authDate: any;
 
 
 
@@ -35,46 +36,25 @@ export class AuthService {
 
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username1 + ':' + password1) });
 
-      console.log(headers);
-      
-    //  let headNew = new HttpHeaders(btoa(username1 + ":" + password1))
+    
 
 
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type':  'application/x-www-form-urlencoded',
-    //     'Authorization': 'Basic' + btoa(username1 + ":" + password1)
-    //   })
-    // };
-
-    // let User ={
-    //   username: "rafa",
-    //   password: "mendes"
-    // }
-
-    //let head = new Headers({'access-control-allow-origin': '*'});
-    // let options = new RequestOptions({})
-
-    //  console.log(this.http.post('http://192.168.2.11:8080/login', User, httpOptions),httpOptions );
-
-    //  const params = new HttpParams({
-    //   fromObject: {
-    //     username: username1,
-    //     password: password1
-    //   }
-    // });
+    // const headers1 = new HttpHeaders({ Authorization: 'Basic ' + 'Z2c6MTIz'});
+    console.log(headers);
 
 
-      console.log(this.http.get('http://localhost:4200/login', { headers }));
-      
-    return this.http.get('http://localhost:4200/login', { headers })
+    console.log(this.http.get<User>('http://localhost:4200/secured', { headers }));
+
+    return this.authDate = this.http.get<User>('http://localhost:4200/stations', { headers})
       .pipe(
         map(userData => {
+          sessionStorage.setItem('username', username1);
           let authStr = 'Basic ' + btoa(username1 + ":" + password1);
           sessionStorage.setItem('basicauth', authStr)
           console.log(userData, 'userdata');
           return userData;
         })
+      
       )
 
   }

@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'seats/:id/:from/:to', component: SeatsComponent, canActivate: [AuthGuardService] },
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService] },
   { path: 'schedule', component: ScheduleComponent },
-  { path: 'logout', component: LogoutComponent },
+  { path: 'logout', component: LogoutComponent, canActivate:[AuthGuardService] },
   { path: 'buypage', component: BuyingpageComponent },
 
 ];

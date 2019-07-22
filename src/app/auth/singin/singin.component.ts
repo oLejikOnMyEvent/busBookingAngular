@@ -20,7 +20,7 @@ export class SinginComponent implements OnInit {
   //   password : 1
   // }
 
-    error = " "
+    // error = " "
   // email = new FormControl('', [Validators.required, Validators.email]);
 
 
@@ -45,13 +45,10 @@ export class SinginComponent implements OnInit {
     (this.loginservice.auth(this.username, this.password)
     .subscribe(
         data => {
-          console.log(data)
-          this.router.navigate(['buyticket-list'])
+          this.router.navigate([''])
           this.invalidLogin = false
-          
         },
         error => {
-          error = console.log(error, 'from service');
           this.invalidLogin = true
         }
       ))
