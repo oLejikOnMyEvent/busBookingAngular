@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import {User } from './User';
+import { User } from './User';
 
 // export class User {
 //   constructor(
@@ -17,25 +17,26 @@ import {User } from './User';
 export class AuthService {
 
   User = {
-    username : "rafa",
-    password : "mendes"
+    username: "rafa",
+    password: "mendes"
   }
 
   constructor(private http: HttpClient
-    ) {
-
-    
-     }
+  ) {
 
 
+  }
 
 
- auth(username1, password1) {
+
+
+  auth(username1, password1) {
+
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username1 + ':' + password1) });
+
+      console.log(headers);
       
-   
-    const params = new HttpHeaders({Authorization: 'Basic ' +  btoa(username1 + ":" + password1)})
-    
-
     //  let headNew = new HttpHeaders(btoa(username1 + ":" + password1))
 
 
@@ -50,10 +51,10 @@ export class AuthService {
     //   username: "rafa",
     //   password: "mendes"
     // }
-    
+
     //let head = new Headers({'access-control-allow-origin': '*'});
     // let options = new RequestOptions({})
-  
+
     //  console.log(this.http.post('http://192.168.2.11:8080/login', User, httpOptions),httpOptions );
 
     //  const params = new HttpParams({
@@ -63,15 +64,19 @@ export class AuthService {
     //   }
     // });
 
-    return this.http.get('http://localhost:4200/login', {params})
-    .pipe(
-      map(  userData => {
-     let authStr = 'Basic ' +  btoa(username1 + ":" + password1);
-     sessionStorage.setItem('basicauth', authStr)
-        return userData;
-      })
-    )
-   
+
+      console.log(this.http.get('http://localhost:4200/login', { headers }));
+      
+    return this.http.get('http://localhost:4200/login', { headers })
+      .pipe(
+        map(userData => {
+          let authStr = 'Basic ' + btoa(username1 + ":" + password1);
+          sessionStorage.setItem('basicauth', authStr)
+          console.log(userData, 'userdata');
+          return userData;
+        })
+      )
+
   }
 
 

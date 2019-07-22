@@ -8,9 +8,9 @@ import { AuthService } from './auth.service';
 export class BasicAuthHttpInterceptorService implements HttpInterceptor {
 
 
-  constructor() {
+  constructor() {}
 
-    intercept(req: HttpRequest <any>, next: HttpHandler){
+    intercept(req: HttpRequest<any>, next: HttpHandler){
 
       if (sessionStorage.getItem('username') && sessionStorage.getItem('basicauth')) {
         req = req.clone({
@@ -23,5 +23,4 @@ export class BasicAuthHttpInterceptorService implements HttpInterceptor {
       return next.handle(req);
     }
   }
-}
 
