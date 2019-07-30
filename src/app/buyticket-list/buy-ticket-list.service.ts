@@ -24,18 +24,18 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class BuyTicketListService {
 
-  private approvalStageMessage = new BehaviorSubject('Basic Approval is required!');
-  currentApprovalStageMessage = this.approvalStageMessage.asObservable();
+  // private approvalStageMessage = new BehaviorSubject('Basic Approval is required!');
+  // currentApprovalStageMessage = this.approvalStageMessage.asObservable();
 
 
-  stableUrlFlightData: any
+  // stableUrlFlightData: any
 
   constructor(private http: HttpClient) { }
 
 
 
   checkFlights(cityFrom, cityTo, date) {
-    return this.http.get(`http://192.168.2.11:8080/schedule?start=${cityFrom}&finish=${cityTo}&Date=${date}`)
+    return this.http.get(`http://localhost:4200/schedule?start=${cityFrom}&finish=${cityTo}&Date=${date}`)
   }
 
 
@@ -63,6 +63,9 @@ export class BuyTicketListService {
      return this.http.post(`http://localhost:4200/booking/`, body)
   }
 
+  checkBusHistory(){
+    return this.http.get('http://localhost:4200/booking/story/')
+   }
 
 }
 // bus:

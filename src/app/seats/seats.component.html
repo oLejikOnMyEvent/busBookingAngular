@@ -124,9 +124,9 @@
     </div>
   </div> -->
 
-  <div class="SectoreOneUp">
+  <div class="SectoreOneUp" style="margin-left: 550px; margin-right: 550px;">
     <mat-button-toggle value="bold" *ngFor="let n of allFreeSeats.freeSeats" (click)="numberOfPlace(n)"
-      #seatsToggleButtons class="seatsToggleButtons" (click)="showSeats()">
+      #seatsToggleButtons class="seatsToggleButtons" (click)="showSeats()" >
       {{n}}</mat-button-toggle>
   </div>
 

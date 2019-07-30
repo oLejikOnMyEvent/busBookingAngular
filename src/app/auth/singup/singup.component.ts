@@ -15,7 +15,7 @@ export class SingupComponent implements OnInit {
   form: FormGroup;
 
 
-  constructor(private regist:RegistrService ) { }
+  constructor(private RegistrService:RegistrService ) { }
 
   ngOnInit() {
    this.form = new FormGroup({
@@ -28,6 +28,7 @@ export class SingupComponent implements OnInit {
 
   onSubmit(){
         console.log(this.form);
+       // this.RegistrService.addUser()
     }
 
 
