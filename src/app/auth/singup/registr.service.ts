@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,16 +8,18 @@ import { HttpClient } from '@angular/common/http';
 export class RegistrService {
 
 
-    regUrl = "http://192.168.2.11:8080/registration";
-  constructor(private http: HttpClient  ) { }
+  regUrl = "http://localhost:4200/registration";
+  constructor(private http: HttpClient) { }
 
-  addUser(login:string, password:string, fullname: string){
-          let data ={
-            login: login,
-            password: password,
-            fullname: fullname
-          }
-    
-   return this.http.post(this.regUrl, data)
-        }
+  addUser(username: string, fullname: string, password: string) {
+    let data = {
+      "username" : username,
+      "password": password,
+      "fullname": fullname
+    }
+
+    return this.http.post(this.regUrl, data)
+
+    // return of(console.log(data))
+  }
 }

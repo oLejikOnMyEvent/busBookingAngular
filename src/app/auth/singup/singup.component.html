@@ -1,37 +1,32 @@
-<form class="example-form " (ngSubmit) ="onSubmit()" [formGroup]="form"> 
+<form class="example-form "> 
  
-  <mat-form-field class="example-full-width">
-    <input 
-    matInput placeholder="userName" id="login"  fromControlName="userName"
-    [ngClass]="{'has error': form.get('userName').invalid && form.get('userName').touched}"> 
-    <span class="form-help-text" *ngIf="form.get('userName').invalid && form.get('UserName').touched"> 
+    <div> 
+    <input type="text"   placeholder="userName" id="userName"  [formControl]="userName"> 
+    <!-- <span class="form-help-text" *ngIf="form.get('userName').invalid && form.get('UserName').touched"> 
 
      userName не может быть пустым
 
-    </span>
+    </span> -->
   
-  </mat-form-field>
+  </div>
 
 
 
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="password"  id="password"  fromControlName="password"
-    [ngClass]="{'has error': form.get('password').invalid && form.get('password').touched}">
-   
-   <span class="form-help-text" *ngIf="form.get('password').invalid && form.get('password').touched"> 
+  <div>
+    <input type="text"   placeholder="password"  id="password"  [formControl]="password">
+   </div>
+   <!-- <span class="form-help-text" *ngIf="form.get('password').invalid && form.get('password').touched"> 
 
     password не может быть пустым
 
-  </span>
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-      <input matInput placeholder="Full name"  id="name"  fromControlName="fullName"
-      [ngClass]="{'has error': form.get('fullName').invalid && form.get('fullName').touched}">
-      <span class="form-help-text" *ngIf="form.get('fullName').invalid && form.get('fullName').touched"> 
+  </span> -->
+  <div>
+      <input type="text"   placeholder="Full name"  id="fullName"  [formControl]="fullName">
+      <!-- <span class="form-help-text" *ngIf="form.get('fullName').invalid && form.get('fullName').touched"> 
 
       fullName не может быть пустым
     
-      </span>
-    </mat-form-field>
-  <button mat-raised-button color="primary" type="submit"> Sign up </button>
+      </span> -->
+    </div>
+  <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">  Sign up </button>
 </form>

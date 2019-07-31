@@ -59,7 +59,9 @@
                         <div class="table-responsive">
                             <table class="table" >
                                 <thead class=" text-primary">
-                             
+                             <th>
+                               Номер маршрута
+                             </th>
                                     <th>
                                         Маршрут
                                     </th>
@@ -70,31 +72,48 @@
                                      Дата прибытия
                                     </th>
                                     <th>
-                                        Вместимость
+                                       Цена
                                     </th>
 
                                     <th>
-                                        Цена
+                                        Номер Сиденья
                                     </th>
 
+                                    <th>
+                                      Дата бронирования
+                                    </th>
                                 </thead>
-                                <tbody >
+                                <tbody *ngFor="let userHistory of busHistoryList">
                                     <tr>
                                         
+                                        <!-- <td>
+                                       {{userHistory.bookingId}}
+                                        </td> -->
                                         <td>
-                                       
+                                          {{userHistory.tripNumber}}
                                         </td>
                                         <td>
-                                     
-                                        </td>
-                                        <td>
-                                       
+                                          {{userHistory.tripTitle}}
                                         </td>
                                         <td class="text-primary">
-                                           
-
-
-                                        </td>
+                                          <td>
+                                              {{userHistory.departure}}
+                                          </td>
+                                          <td>
+                                              {{userHistory.arrival}}
+                                            </td>
+                                            <td>
+                                                {{userHistory.price}}
+                                              </td>
+                                              <td>
+                                                  {{userHistory.seatNum}}
+                                                </td>
+                                                <td>
+                                             
+                                                    {{userHistory.bookingDate}}
+                                                  </td>
+                                               
+                          
                                         <th>
                                          
                                         </th>

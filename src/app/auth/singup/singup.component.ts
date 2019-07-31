@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-import { RegistrService } from './registr.service'; 
+import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { RegistrService } from './registr.service';
 
 
 @Component({
@@ -12,24 +12,31 @@ import { RegistrService } from './registr.service';
 export class SingupComponent implements OnInit {
 
 
-  form: FormGroup;
+  // form = this.fb.group({
+  //   userName: [''],
+  //   password: [''],
+  //   fullName: ['']
+  // })
 
-
-  constructor(private RegistrService:RegistrService ) { }
+  userName = new FormControl('', Validators.required);
+  fullName = new FormControl('', Validators.required);
+  password = new FormControl('', Validators.required);
+ 
+  constructor(private RegistrService: RegistrService, private fb: FormBuilder) { }
 
   ngOnInit() {
-   this.form = new FormGroup({
-     userName : new FormControl(null, [Validators.required]),
-  password: new FormControl(null,[Validators.required]),
-     fullName : new FormControl (null, [Validators.required])
-   });
+
 
   }
 
-  onSubmit(){
-        console.log(this.form);
-       // this.RegistrService.addUser()
-    }
+  onSubmit() {
+    console.log(this.userName.value +"useName" , this.password.value + "password", this.fullName.value + "fullname ");
+    this.RegistrService.addUser(this.userName.value, this.fullName.value,  this.password.value,)
+    .subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    )
+  }
 
 
 }
