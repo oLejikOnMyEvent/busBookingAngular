@@ -51,7 +51,7 @@
 
 
                    
-
+<h1 *ngIf="busHistoryList"> Исторя покупок {{busHistoryList[0].userFullname}} </h1>
                     <div class="tripTitle" style="margin-left:20px;" >
                         <h3> </h3> 
                     </div>
@@ -95,7 +95,7 @@
                                         <td>
                                           {{userHistory.tripTitle}}
                                         </td>
-                                        <td class="text-primary">
+                                     
                                           <td>
                                               {{userHistory.departure}}
                                           </td>

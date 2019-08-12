@@ -18,6 +18,7 @@ export class BusHistoryComponent implements OnInit {
 
     constructor(private BuyTicketListService: BuyTicketListService){}
 
+    username;
     busHistoryList;
     ngOnInit(){
      this.BuyTicketListService.checkBusHistory()
@@ -29,6 +30,8 @@ export class BusHistoryComponent implements OnInit {
           err => console.log(err)
           
         )
-   
+
+   this.username = sessionStorage.getItem('username');
+   console.log(this.username);
     }
 }

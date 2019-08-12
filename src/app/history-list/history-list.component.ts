@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-history-list',
   template: `
     <p>
-        history list is working
+       
 
         <app-bus-history> </app-bus-history>
     </p>
