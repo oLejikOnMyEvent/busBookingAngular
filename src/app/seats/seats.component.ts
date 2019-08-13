@@ -22,7 +22,7 @@ export class SeatsComponent implements OnInit {
 
   showAllSeats = true;
   numberOfSeats;
-  @Input() seats: any;
+  // @Input() seats: any;
 
   bookedSeat = [{
     number: 9,
@@ -183,24 +183,39 @@ export class SeatsComponent implements OnInit {
   }
 
 
-
+  bookingIdNext
+bookingId
   BookingSeat() {
     let date = this.allFreeSeats.timeDeparture
     date = moment(date).format("YYYY-MM-DD");
     this.BuyTicketListService.postBookedSeat(this.mass, this.allFreeSeats.tripNum, this.allFreeSeats.stationStart.id, this.allFreeSeats.stationFinish.id, date, this.allFreeSeats.price)
       .subscribe(
-        response => console.log(response),
+        response => {
+          this.bookingIdNext = response
+          this.bookingId =  this.bookingIdNext.id
+          console.log(this.bookingId)},
         error => console.log(error)
       )
 
-  }
+      alert(`вы успешно забронироавли билет на место ${this.mass}`)
+    // let objDAta = {
+    //   seatNumber: this.mass,
+    //   tripNumber: this.allFreeSeats.tripNum,
+    //   stationStart: this.allFreeSeats.stationStart.id,
+    //   stationFinish: this.allFreeSeats.stationFinish.id,
+    //   date: date,
+    //   price: this.allFreeSeats.price
+    // }
 
+    // console.log(objDAta)
+  }
+  clicked = false
   showSeats() {
     if (this.showAllSeats) {
       this.showAllSeats = false
     } else this.showAllSeats = true
 
-
+;
     // this.BuyTicketListService.checkSeats(){
 
     // }

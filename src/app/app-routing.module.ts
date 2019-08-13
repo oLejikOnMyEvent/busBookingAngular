@@ -13,13 +13,14 @@ import { BuyingpageComponent } from './buyingpage/buyingpage.component';
 
 const routes: Routes = [
   { path: 'history-list', component: HistoryListComponent, canActivate: [AuthGuardService] },
-  { path: 'buyticket-list', component: BuyticketListComponent},
+  { path: 'buyticket-list', component: BuyticketListComponent },
   { path: 'signup', component: SingupComponent },
   { path: 'login', component: SinginComponent },
   { path: 'seats/:id/:from/:to', component: SeatsComponent, canActivate: [AuthGuardService] },
-  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService] },
+  { path: 'checkout/:bookingid/:id/:cityFrom/:cityTo/:dateArrival/:dateDeparture/:price/:seat',
+  component: CheckoutComponent, canActivate: [AuthGuardService] },
   { path: 'schedule', component: ScheduleComponent },
-  { path: 'logout', component: LogoutComponent, canActivate:[AuthGuardService] },
+  { path: 'logout', component: LogoutComponent, canActivate: [AuthGuardService] },
   { path: 'buypage', component: BuyingpageComponent },
 
 ];

@@ -1,4 +1,4 @@
-<mat-card class="BusFlightCard" *ngFor="let station of responseStations; index as seatId">
+<mat-card class="BusFlightCard" *ngFor="let station of responseStations; index as seatId" style="border-radius: 45px; background-color: #cdeeff">
 
   <h4 style="display: flex; justify-content: center" >Номер рейса {{  station.trip }}</h4>
     <mat-grid-list cols="6" rowHeight="2:1">
@@ -35,9 +35,9 @@
   
     </mat-grid-list>
 
-    <button mat-raised-button color="primary" >Купить за {{station.price | currency:"Рублей " }}</button>
-    <a mat-raised-button [routerLink]="['/seats', station.trip,station.startSchedId,station.finishSchedId]"> Buy test {{station.trip}}</a>
-    <button mat-raised-button color="primary" disabled style="margin-left: 50px;"   >Автобус {{station.bus.title}} Свободных Мест {{station.bus.seatsCount}}</button>
+    <!-- <button mat-raised-button color="primary" ></button> -->
+    <a mat-raised-button  color="primary" [routerLink]="['/seats', station.trip,station.startSchedId,station.finishSchedId]"> Купить за {{station.price}} Рублей</a>
+    <button mat-raised-button color="primary" disabled style="margin-left: 50px;"   >Автобус {{station.bus.title}} Свободных Мест  {{station.freeSeatsCount}}</button>
   
 
 </mat-card>

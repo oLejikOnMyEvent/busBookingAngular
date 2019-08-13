@@ -43,8 +43,9 @@
 
 
 
-  <button (click)="showSeats()" style="display: flex; justify-content: center"> Выберите место </button>
-
+  <button mat-raised-button color="primary" (click)="showSeats()" style="display: flex; justify-content: center" > Выберите место </button>
+  <h4> вы выбрали место <i style="margin-left: 5px; color: purple">
+    {{ mass }} </i> </h4>
 
 </mat-card>
 
@@ -136,14 +137,14 @@
 
 
 </mat-card>
-<h2 style="display: flex; justify-content: center"> вы выбрали место <i style="margin-left: 5px; color: purple">
-    {{ mass }} </i> </h2>
 
 
-<mat-card>
-  <button mat-raised-button color="primary" (click)="BookingSeat()">Оплата</button>
-  <a mat-raised-button routerLink="/checkout">Check out</a>
-  <button mat-raised-button color="primary" disabled style="margin-left: 20px;" *ngIf=allFreeSeats>Цена за билет {{allFreeSeats.price}} </button>
+<mat-card style="margin-left:100px; margin-right:100px; margin-top:20px;" *ngIf="allFreeSeats">
+  
+  <button mat-raised-button color="primary" [disabled]="clicked" (click)="BookingSeat(); clicked = true" > Забронировать </button>
+  <a mat-raised-button [routerLink]="['/checkout', bookingId, allFreeSeats.tripNum, allFreeSeats.stationStart.title, allFreeSeats.stationFinish.title, allFreeSeats.timeArrival , allFreeSeats.timeDeparture , allFreeSeats.price, mass]" >Перейти на страницу оплаты</a>
+  <button mat-raised-button color="primary" disabled style="margin-left: 20px;" >Цена за билет {{allFreeSeats.price}} </button>
   <!-- <button mat-raised-button color="primary" disabled style="margin-left: 20px;"   > Свободных мест {{freeNum.length}} </button> -->
   <a mat-raised-button routerLink="/buyticket-list" style="margin-left: 20px;"> Отмена</a>
+
 </mat-card>
