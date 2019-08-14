@@ -40,7 +40,7 @@
 
 <div class="card-body">
   <div class="table-responsive">
-      <table class="table" style="border-top:0px;">
+      <table class="table">
           <thead class=" text-primary">
        <th>
            Номер Рейса
@@ -90,7 +90,7 @@
                        
                          
                             <td>
-                              <a mat-raised-button color="warn" routerLink="/buyticket-list" (click)="cancel()"> Отмена Бронирования</a>
+                              <a mat-raised-button color="warn" routerLink="/buyticket-list" (click)="cancel();"> Отмена Бронирования</a>
                             </td>
                   <th>
                    
@@ -105,6 +105,6 @@
   </div>
 </div>
 
-<div style="display: flex; justify-content: center"> <a mat-raised-button routerLink="/buypage" color="primary" (click)="pay()"> Оплата </a> </div>
+<div style="display: flex; justify-content: center">  <a mat-raised-button (click)="pay()" routerLink="/buypage" color="primary" > Оплата </a> </div>
  
 

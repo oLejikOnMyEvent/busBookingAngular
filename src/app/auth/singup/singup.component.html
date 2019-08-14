@@ -1,7 +1,7 @@
 <form class="example-form "> 
  
-    <div> 
-    <input type="text"   placeholder="userName" id="userName"  [formControl]="userName"> 
+    <div > 
+    <input type="text"   placeholder="userName" id="userName"  [formControl]="userName" style="width: 150px;"> 
     <!-- <span class="form-help-text" *ngIf="form.get('userName').invalid && form.get('UserName').touched"> 
 
      userName не может быть пустым
@@ -12,16 +12,16 @@
 
 
 
-  <div>
-    <input type="text"   placeholder="password"  id="password"  [formControl]="password">
+  <div style="margin-top:20px; width: 150px;">
+    <input type="text"   placeholder="password"  id="password"  [formControl]="password" style="width: 150px;">
    </div>
    <!-- <span class="form-help-text" *ngIf="form.get('password').invalid && form.get('password').touched"> 
 
     password не может быть пустым
 
   </span> -->
-  <div>
-      <input type="text"   placeholder="Full name"  id="fullName"  [formControl]="fullName">
+  <div style="margin-top:20px; width: 150px;"  > 
+      <input type="text"   placeholder="Full name"  id="fullName"  [formControl]="fullName" style="width: 150px;">
       <!-- <span class="form-help-text" *ngIf="form.get('fullName').invalid && form.get('fullName').touched"> 
 
       fullName не может быть пустым

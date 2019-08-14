@@ -1,0 +1,100 @@
+<div class="main-content table_History">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+
+
+                 
+<h3 class="tripPendingTitle" > Исторя покупок </h3>
+                  <!-- <div  style="margin-left:20px;" >
+                   
+                  </div> -->
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table" >
+                              <thead class=" text-primary">
+                           <th>
+                             Номер маршрута
+                           </th>
+                                  <th>
+                                      Маршрут
+                                  </th>
+                                  <th>
+                                    Дата отправления
+                                  </th>
+                                  <th>
+                                   Дата прибытия
+                                  </th>
+                                  <th>
+                                     Стоимость билета
+                                  </th>
+
+                                  <th>
+                                      Номер Сиденья
+                                  </th>
+
+                                  <th>
+                                    Дата бронирования
+                                  </th>
+                              </thead>
+                              <tbody   *ngFor="let pending of allPendingPayBooking">
+                              
+                                  <tr>
+                                      
+                                      <!-- <td>
+                                     {{userHistory.bookingId}}
+                                      </td> -->
+                                      <td>
+                                        {{pending.tripNumber}}
+                                      </td>
+                                      <td>
+                                        {{pending.tripTitle}}
+                                      </td>
+                                   
+                                        <td>
+                                            {{pending.departure | date}}
+                                            {{pending.departure |  date:'hh:mm'}}
+                                        </td>
+                                        <td>
+                                            {{pending.arrival | date}}
+                                            {{pending.arrival |   date:'hh:mm'}}
+                                          
+                                          </td>
+                                          <td>
+                                              {{pending.price}}
+                                            </td>
+                                            <td>
+                                                {{pending.seatNum}}
+                                              </td>
+                                              <td>
+                                           
+                                                  {{pending.bookingDate | date}}
+                                                  {{pending.bookingDate | date:'hh:mm'}}
+
+                                                  
+                                                </td>
+                                             <td>
+                                           
+                                           
+                                           
+                                                  <button  mat-raised-button color="warn" color="warn"  (click)="cancelPending(pending.bookingId)" > Отменить </button>
+
+                                             </td>
+                                             
+                                      <th>
+                                         
+                                      </th>
+                                    
+                                      
+                                  </tr>
+                                  <div style="display: flex; justify-content: center">       <a mat-raised-button  (click)="payPending(pending.bookingId)" routerLink="/buypage" color="primary" > Оплата </a> </div>
+                              </tbody>
+                             
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>

@@ -10,6 +10,7 @@
           <mat-toolbar-row>
               <a *ngIf="loginService.isUserLoggedIn()" mat-raised-button routerLink="history-list">История Купленных Билетов</a>
               <a  mat-raised-button routerLink="buyticket-list" style="margin-left: 10px">Купить Билеты</a>
+              <a  *ngIf="loginService.isUserLoggedIn()" mat-raised-button routerLink="pandingpay" style="margin-left: 10px"> Оплата забронированных билетов</a>
               <!-- <a   mat-raised-button routerLink="schedule" style="margin-left: 10px" >Schedule</a> -->
             
            

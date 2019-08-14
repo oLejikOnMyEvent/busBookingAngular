@@ -11,4 +11,13 @@ export class CheckoutService {
   deleteTrip(item){
     return this.http.delete(`http://localhost:4200/booking/cancel/${item}`)
   }
+
+  payTrp(item){
+    let objData ={
+        id: parseInt(item),
+        paid: true
+    }
+    // let newObjDAta = JSON.stringify(objData)
+    return this.http.patch(`http://localhost:4200/booking/pay/${item}`, objData)
+  }
 }

@@ -10,6 +10,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { BuyingpageComponent } from './buyingpage/buyingpage.component';
+import {PendingBookingComponent} from './pending-booking/pending-booking.component'
 
 const routes: Routes = [
   { path: 'history-list', component: HistoryListComponent, canActivate: [AuthGuardService] },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'schedule', component: ScheduleComponent },
   { path: 'logout', component: LogoutComponent, canActivate: [AuthGuardService] },
   { path: 'buypage', component: BuyingpageComponent },
+  {path :'pandingpay', component: PendingBookingComponent, canActivate: [AuthGuardService] }
 
 ];
 
@@ -30,4 +32,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [HistoryListComponent, BuyticketListComponent]
+export const routingComponents = [HistoryListComponent, BuyticketListComponent, PendingBookingComponent]

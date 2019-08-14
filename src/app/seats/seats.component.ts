@@ -185,15 +185,17 @@ export class SeatsComponent implements OnInit {
 
   bookingIdNext
 bookingId
+bookingPaid
   BookingSeat() {
     let date = this.allFreeSeats.timeDeparture
     date = moment(date).format("YYYY-MM-DD");
     this.BuyTicketListService.postBookedSeat(this.mass, this.allFreeSeats.tripNum, this.allFreeSeats.stationStart.id, this.allFreeSeats.stationFinish.id, date, this.allFreeSeats.price)
       .subscribe(
         response => {
-          this.bookingIdNext = response
-          this.bookingId =  this.bookingIdNext.id
-          console.log(this.bookingId)},
+          this.bookingIdNext = response,
+          this.bookingId =  this.bookingIdNext.id,
+        
+          console.log(this.bookingId, this.bookingIdNext)},
         error => console.log(error)
       )
 

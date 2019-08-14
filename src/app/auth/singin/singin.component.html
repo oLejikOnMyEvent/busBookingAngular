@@ -20,10 +20,45 @@
 </form > -->
 
 
-<div style="margin-bottom: 30px" >
-  User Name : <input type="text" name="username" [(ngModel)]="username">
-  Password : <input type="password" name="password" [(ngModel)]="password">
+<div style="display: flex; justify-content: center;" >
+  <div>
+        <p> User Name :  </p>
+  <input type="text" [(ngModel)]="username">
+      <div>
+        <button mat-raised-button color="primary" style="margin-left: 10px" (click)="checkLogin()"> login </button>
+        <div>
+        <a href="http://localhost:4200/auth" class="btn btn-info" style="margin-left: 10px">admin login</a>
+      </div>
+      </div>
+
 </div>
 
-<button mat-raised-button color="primary" style="margin-left: 10px" (click)="checkLogin()"> login </button>
-<a href="http://localhost:4200/auth" class="btn btn-info">admin login</a>
+<div>
+<p> Password : </p>
+   <input type="password"[(ngModel)]="password">
+    <div>
+
+
+
+   </div>
+  </div>
+
+  <div>
+ 
+
+</div>
+</div>
+  
+
+  <!-- <div>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="User Name"  name="username"  >
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Password" type="password" name="password">
+  </mat-form-field>
+</div>
+</div> -->
+

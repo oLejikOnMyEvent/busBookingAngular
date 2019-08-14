@@ -37,7 +37,8 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { HeaderDirective } from './header/header.directive';
 import { BuyingpageComponent } from './buyingpage/buyingpage.component';
 import { BuyticketListComponent } from './buyticket-list/buyticket-list.component';
-import { BasicAuthHttpInterceptorService} from './auth/basic-auth-http-interceptor.service'
+import { BasicAuthHttpInterceptorService} from './auth/basic-auth-http-interceptor.service';
+import { PendingBookingComponent } from './pending-booking/pending-booking.component'
 
 
 
@@ -57,7 +58,8 @@ import { BasicAuthHttpInterceptorService} from './auth/basic-auth-http-intercept
     LogoutComponent,
     HeaderDirective,
     BuyingpageComponent,
-    BuyticketListComponent
+    BuyticketListComponent,
+    PendingBookingComponent
 
   ],
   imports: [

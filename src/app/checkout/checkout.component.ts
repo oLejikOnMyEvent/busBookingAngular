@@ -34,6 +34,7 @@ export class CheckoutComponent implements OnInit {
  private  dateDeparture :string;
  private price: number;
  private  seat: number;
+ //private bool: boolean;
   // private subscription: Subscription;
   // private cityFrom: Subscription;
   // private cityTo: Subscription;
@@ -45,7 +46,8 @@ export class CheckoutComponent implements OnInit {
   private dateArrivalCheck: Subscription;
   private  dateDepartureCheck :Subscription;
   private priceCheck: Subscription;
-  private  seatCheck: Subscription
+  private  seatCheck: Subscription;
+  //private boolCheck: Subscription;
 
   constructor(private activateRoute: ActivatedRoute, private CheckoutService: CheckoutService) { 
 
@@ -57,6 +59,7 @@ export class CheckoutComponent implements OnInit {
   this.dateDepartureCheck  = activateRoute.params.subscribe(params => this.dateDeparture = params['dateDeparture']);
   this.priceCheck = activateRoute.params.subscribe(params => this.price = params['price']); 
   this.seatCheck = activateRoute.params.subscribe(params => this.seat = params['seat']);
+  //this.boolCheck = activateRoute.params.subscribe(params => this.bool = params['bool']);
   
   }
 
@@ -66,6 +69,13 @@ export class CheckoutComponent implements OnInit {
   }
 
   pay(){
+    this.CheckoutService.payTrp(this.bookingid)
+    .subscribe(
+      res =>console.log(res),
+      err => console.log(err)
+      
+      
+    )
     alert('Вы купили билет')
   }
 
@@ -77,5 +87,9 @@ export class CheckoutComponent implements OnInit {
       )
       
     alert('Вы отменили бронирование')
+  }
+
+  payBooking(){
+  
   }
 }
