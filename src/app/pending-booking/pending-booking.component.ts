@@ -11,7 +11,7 @@ export class PendingBookingComponent implements OnInit {
   constructor(private PendingBookingService: PendingBookingService) { }
 
 allPendingPayBooking;
-
+payed: false;
   ngOnInit() {
     this.PendingBookingService.checkPending()
       .subscribe(
@@ -22,6 +22,8 @@ allPendingPayBooking;
             err => console.log(err)
             
       )
+
+
   }
 
   payPending(item){
@@ -41,8 +43,8 @@ allPendingPayBooking;
               res => console.log(res),
               err => console.log(err)
             )
+         
       alert(`Вы отменили бронь`)
-
       }
  
 

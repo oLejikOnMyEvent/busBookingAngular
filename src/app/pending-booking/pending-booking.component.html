@@ -6,7 +6,7 @@
 
 
                  
-<h3 class="tripPendingTitle" > Исторя покупок </h3>
+<h3 class="tripPendingTitle" > Забронированные билеты </h3>
                   <!-- <div  style="margin-left:20px;" >
                    
                   </div> -->
@@ -78,7 +78,7 @@
                                            
                                            
                                            
-                                                  <button  mat-raised-button color="warn" color="warn"  (click)="cancelPending(pending.bookingId)" > Отменить </button>
+                                                  <button  mat-raised-button color="warn" color="warn" [disabled]="payed" (click)="cancelPending(pending.bookingId); payed=true" > Отменить </button>
 
                                              </td>
                                              
@@ -88,7 +88,7 @@
                                     
                                       
                                   </tr>
-                                  <div style="display: flex; justify-content: center">       <a mat-raised-button  (click)="payPending(pending.bookingId)" routerLink="/buypage" color="primary" > Оплата </a> </div>
+                                  <div style="display: flex; justify-content: center">       <a mat-raised-button [disabled]="payed" (click)="payPending(pending.bookingId)" routerLink="/buypage" color="primary" > Оплата </a> </div>
                               </tbody>
                              
                           </table>
