@@ -209,12 +209,13 @@ bookingId
 
     // console.log(objDAta)
   }
+  
   clicked = false
   showSeats() {
     if (this.showAllSeats) {
       this.showAllSeats = false
     } else this.showAllSeats = true
-
+  
 ;
     // this.BuyTicketListService.checkSeats(){
 

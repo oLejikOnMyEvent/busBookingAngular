@@ -43,7 +43,7 @@
    -->
 
 
-   <div class="main-content">
+   <div class="main-content table_History">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -51,10 +51,10 @@
 
 
                    
-<h1 *ngIf="busHistoryList"> Исторя покупок {{busHistoryList[0].userFullname}} </h1>
-                    <div class="tripTitle" style="margin-left:20px;" >
-                        <h3> </h3> 
-                    </div>
+<h3 *ngIf="busHistoryList" class="tripTitle" > Исторя покупок {{busHistoryList[0].userFullname}} </h3>
+                    <!-- <div  style="margin-left:20px;" >
+                     
+                    </div> -->
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table" >
@@ -97,10 +97,13 @@
                                         </td>
                                      
                                           <td>
-                                              {{userHistory.departure}}
+                                              {{userHistory.departure | date}}
+                                              {{userHistory.departure |  date:'hh:mm'}}
                                           </td>
                                           <td>
-                                              {{userHistory.arrival}}
+                                              {{userHistory.arrival | date}}
+                                              {{userHistory.arrival |   date:'hh:mm'}}
+                                            
                                             </td>
                                             <td>
                                                 {{userHistory.price}}
@@ -110,7 +113,8 @@
                                                 </td>
                                                 <td>
                                              
-                                                    {{userHistory.bookingDate}}
+                                                    {{userHistory.bookingDate | date}}
+                                                    {{userHistory.bookingDate | date:'hh:mm'}}
                                                   </td>
                                                
                           

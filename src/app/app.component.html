@@ -8,20 +8,20 @@
         <mat-toolbar color="primary">
         
           <mat-toolbar-row>
-              <a *ngIf="loginService.isUserLoggedIn()" mat-raised-button routerLink="history-list">History</a>
-              <a  mat-raised-button routerLink="buyticket-list" style="margin-left: 10px">Buying tickts</a>
+              <a *ngIf="loginService.isUserLoggedIn()" mat-raised-button routerLink="history-list">История Купленных Билетов</a>
+              <a  mat-raised-button routerLink="buyticket-list" style="margin-left: 10px">Купить Билеты</a>
               <!-- <a   mat-raised-button routerLink="schedule" style="margin-left: 10px" >Schedule</a> -->
             
            
             <span class="example-spacer"></span>
 
-            <a  mat-raised-button routerLink="signup">Registration </a>
+            <a  mat-raised-button routerLink="signup">Регистрация </a>
             <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon" style="margin-right: 20px">verified_user</mat-icon> -->
             <!-- <base href="/"> -->
 
             <!-- <a  *ngIf="!loginService.isUserLoggedIn()" mat-raised-button href="/login" style="margin-left: 10px">Sign in</a> -->
-            <a  *ngIf="!loginService.isUserLoggedIn()" mat-raised-button routerLink="login" style="margin-left: 10px">Sign in</a>
-            <a  *ngIf="loginService.isUserLoggedIn()" mat-raised-button routerLink="logout" style="margin-left: 10px">Log out</a>
+            <a  *ngIf="!loginService.isUserLoggedIn()" mat-raised-button routerLink="login" style="margin-left: 10px">Войти</a>
+            <a  *ngIf="loginService.isUserLoggedIn()" mat-raised-button routerLink="logout" style="margin-left: 10px">Выйти из профиля</a>
           </mat-toolbar-row>
        
         </mat-toolbar>
