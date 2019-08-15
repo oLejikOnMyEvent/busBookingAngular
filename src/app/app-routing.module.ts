@@ -11,6 +11,7 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { BuyingpageComponent } from './buyingpage/buyingpage.component';
 import {PendingBookingComponent} from './pending-booking/pending-booking.component'
+import {NotFoundComponent} from './not-found/not-found.component'
 
 const routes: Routes = [
   { path: 'history-list', component: HistoryListComponent, canActivate: [AuthGuardService] },
@@ -23,7 +24,9 @@ const routes: Routes = [
   { path: 'schedule', component: ScheduleComponent },
   { path: 'logout', component: LogoutComponent, canActivate: [AuthGuardService] },
   { path: 'buypage', component: BuyingpageComponent },
-  {path :'pandingpay', component: PendingBookingComponent, canActivate: [AuthGuardService] }
+  {path :'pandingpay', component: PendingBookingComponent, canActivate: [AuthGuardService] },
+  {path: 'not-found', component: NotFoundComponent},
+  {path: '**', redirectTo : '/not-found'}
 
 ];
 

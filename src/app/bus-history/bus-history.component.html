@@ -43,7 +43,8 @@
    -->
 
 
-   <div class="main-content table_History">
+   <app-preloader *ngIf="!isLoaded" class="preloader"></app-preloader>
+   <div class="main-content table_History" *ngIf="isLoaded" >
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -83,7 +84,9 @@
                                       Дата бронирования
                                     </th>
                                 </thead>
-                                <tbody *ngFor="let userHistory of busHistoryList">
+
+                               
+                                <tbody  *ngFor="let userHistory of busHistoryList">
                                     <tr>
                                         
                                         <!-- <td>
@@ -126,8 +129,11 @@
                                     </tr>
                                    
                                 </tbody>
-                               
+                            
                             </table>
+
+
+                            <div *ngIf="empty"> <h3> Оплаченых билетов нету</h3></div>
                         </div>
                     </div>
                 </div>

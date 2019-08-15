@@ -58,15 +58,29 @@
 
 
 
-          <button mat-flat-button color="accent" class="ShowButton"   style="margin-left:20px;" > Показать</button>
+          <button mat-flat-button color="accent" class="ShowButton" style="margin-left:20px;" > Показать</button>
           <!-- <button mat-flat-button color="warn" class="checkButton" style="margin-left:20px;" type="submit"> Check </button> -->
           <!-- <a mat-raised-button routerLink="/seats/2/111/114" style="margin-left: 20px;" > seats 2</a> -->
+       
         </mat-grid-tile>
       </mat-grid-list>
     </mat-card>
+
+    
     </form>
   
   
+    <!-- <div > 
 
-    <app-bus-flight *ngIf="show" [responseStations]="responseStationsObj"> </app-bus-flight>
+        ...loading 
+
+         
+    </div> -->
+    
+    <app-preloader *ngIf="!isLoaded" class="preloader"></app-preloader>
+
+    <app-bus-flight *ngIf="show && isLoaded" [responseStations]="responseStationsObj"></app-bus-flight>
+  
+   
     <!-- <h1 *ngIf="showErr"> Маршрут не найден </h1> -->
+

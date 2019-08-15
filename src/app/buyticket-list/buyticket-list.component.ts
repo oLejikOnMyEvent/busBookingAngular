@@ -12,6 +12,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 
 
 import * as moment from 'moment';
+import { delay } from 'q';
 
 export interface StationUrlFrom {
   id: number;
@@ -36,7 +37,7 @@ export class BuyticketListComponent implements OnInit {
   minDate = new Date();
   maxDate = new Date();
 
-
+  isLoaded = false;
 
   events: string[] = [];
 
@@ -99,10 +100,11 @@ export class BuyticketListComponent implements OnInit {
               map(title => title ? this._filterTo(title) : this.optionsTo.slice())
             )
         )
+
       );
 
 
-
+    this.isLoaded = true;
   }
 
   displayFn(station?: StationUrlFrom): string | undefined {
@@ -117,18 +119,18 @@ export class BuyticketListComponent implements OnInit {
 
     this.resultCityFrom = JSON.stringify(this.myControl.value.id);
 
- 
+
 
     return this.options.filter(option => option.title.toLowerCase().indexOf(filterValue) === 0);
   }
 
-cityToClear(){
-  this.myControlTo.reset({});
-  
-}
-cityFromClear(){
-  this.myControl.reset({});
-}
+  cityToClear() {
+    this.myControlTo.reset({});
+
+  }
+  cityFromClear() {
+    this.myControl.reset({});
+  }
   displayFnTo(station?: StationUrlTo): string | undefined {
     return station ? station.title : undefined;
   }
@@ -155,31 +157,39 @@ cityFromClear(){
 
 
   showErr
-erorRecive
-  onSubmit() {
+  erorRecive
 
+  onSubmit() {
+    this.isLoaded = false;
     let sendCityFrom = JSON.stringify(this.form.value.myControl.id);
     let sendCityTo = JSON.stringify(this.form.value.myControlTo.id);
     let sendDate = this.form.value.date;
-   sendDate =  moment(sendDate).format("YYYY-MM-DD");
-  
+    sendDate = moment(sendDate).format("YYYY-MM-DD");
+
 
     if (sendCityFrom !== sendCityTo) {
+
       this.BuyTicketListService.checkFlights(sendCityFrom, sendCityTo, sendDate)
         .subscribe(
           (response) => {
-            this.responseStationsObj = response;
-            this.show = true;
+
+            this.isLoaded = true,
+              this.show = true,
+
+              this.responseStationsObj = response;
             console.log(this.responseStationsObj, 'responseStationsObj');
+            console.log(this.show, this.isLoaded);
+
           },
           (error) => {
             this.erorRecive = error.error,
-            alert(this.erorRecive)
-            if(this.show) { this.show=false}
+              alert(this.erorRecive)
+            this.isLoaded = true;
+            if (this.show) { this.show = false }
 
-            
-            
-            }
+
+
+          }
 
 
         );
