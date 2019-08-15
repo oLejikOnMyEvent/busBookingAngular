@@ -38,17 +38,23 @@ export class SinginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  
   }
 
+        
 
   checkLogin() {
     (this.loginservice.auth(this.username, this.password)
     .subscribe(
         data => {
-          this.router.navigate([''])
+          this.router.navigate(['buyticket-list'])
           this.invalidLogin = false
         },
         error => {
+          
+            alert('Вы ввели неправильное имя или пароль')
+            
+        
           this.invalidLogin = true
         }
       ))

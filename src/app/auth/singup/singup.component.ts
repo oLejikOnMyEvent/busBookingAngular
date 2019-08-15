@@ -12,15 +12,13 @@ import { RegistrService } from './registr.service';
 export class SingupComponent implements OnInit {
 
 
-  // form = this.fb.group({
-  //   userName: [''],
-  //   password: [''],
-  //   fullName: ['']
-  // })
+  form = this.fb.group({
+    userName: this.fb.control('', Validators.required),
+    password:  this.fb.control('',  Validators.required),
+    fullName:  this.fb.control('',  Validators.required)
+  })
 
-  userName = new FormControl('', Validators.required);
-  fullName = new FormControl('', Validators.required);
-  password = new FormControl('', Validators.required);
+  
  
   constructor(private RegistrService: RegistrService, private fb: FormBuilder) { }
 
@@ -30,13 +28,16 @@ export class SingupComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.userName.value +"useName" , this.password.value + "password", this.fullName.value + "fullname ");
-    this.RegistrService.addUser(this.userName.value, this.fullName.value,  this.password.value,)
+   
+    this.RegistrService.addUser(this.form.value.userName, this.form.value.fullName ,  this.form.value.password,)
     .subscribe(
       res => console.log(res),
       err => console.log(err)
     )
-  }
-
+    alert(`Пользователь ${this.form.value.fullName} успешно зарегистрирован`)
+   
+    this.form.reset({ userName: '', password: '', fullName: '' });
+   
+    }
 
 }

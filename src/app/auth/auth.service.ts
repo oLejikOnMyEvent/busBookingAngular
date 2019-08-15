@@ -40,10 +40,10 @@ export class AuthService {
 
 
     // const headers1 = new HttpHeaders({ Authorization: 'Basic ' + 'Z2c6MTIz'});
-    console.log(headers);
+    // console.log(headers);
 
 
-    console.log(this.http.get<User>('http://localhost:4200/secured', { headers }));
+    // console.log(this.http.get<User>('http://localhost:4200/secured', { headers }));
 
     return this.authDate = this.http.get<User>('http://localhost:4200/stations', { headers})
       .pipe(
@@ -51,7 +51,7 @@ export class AuthService {
           sessionStorage.setItem('username', username1);
           let authStr = 'Basic ' + btoa(username1 + ":" + password1);
           sessionStorage.setItem('basicauth', authStr)
-          console.log(userData, 'userdata');
+          // console.log(userData, 'userdata');
           return userData;
         })
       

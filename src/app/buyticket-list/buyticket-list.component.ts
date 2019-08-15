@@ -9,7 +9,7 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { BusFlightComponent } from '../bus-flight/bus-flight.component';
 
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-// import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
+
 
 import * as moment from 'moment';
 
@@ -117,12 +117,18 @@ export class BuyticketListComponent implements OnInit {
 
     this.resultCityFrom = JSON.stringify(this.myControl.value.id);
 
-    // console.log(this.resultCityFrom, typeof this.resultCityFrom);
+ 
 
     return this.options.filter(option => option.title.toLowerCase().indexOf(filterValue) === 0);
   }
 
-
+cityToClear(){
+  this.myControlTo.reset({});
+  
+}
+cityFromClear(){
+  this.myControl.reset({});
+}
   displayFnTo(station?: StationUrlTo): string | undefined {
     return station ? station.title : undefined;
   }
@@ -148,8 +154,8 @@ export class BuyticketListComponent implements OnInit {
 
 
 
-
-
+  showErr
+erorRecive
   onSubmit() {
 
     let sendCityFrom = JSON.stringify(this.form.value.myControl.id);
@@ -163,20 +169,25 @@ export class BuyticketListComponent implements OnInit {
         .subscribe(
           (response) => {
             this.responseStationsObj = response;
+            this.show = true;
             console.log(this.responseStationsObj, 'responseStationsObj');
           },
-          (error) => console.log(error)
+          (error) => {
+            this.erorRecive = error.error,
+            alert(this.erorRecive)
+            if(this.show) { this.show=false}
+
+            
+            
+            }
 
 
         );
-    } else { alert('Ошибка: совпадают название станции отправления и станции прибытия') }
+    } else { alert('Ошибка: совпадают название станции отправления и станции прибытия'), this.form.reset() }
     console.log(`City From ${sendCityFrom}`, `City To ${sendCityTo}`, `Date ${sendDate}`);
 
   }
 
 
-  showFlight() {
-    this.show = true;
-  }
 
 }

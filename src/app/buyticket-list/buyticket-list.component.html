@@ -7,7 +7,7 @@
             <div class="searchFrom">
                 <mat-form-field class="example-full-width" >
                   <input type="text" placeholder="Станция отправления" aria-label="Number" matInput [formControl]="myControl"  
-                    [matAutocomplete]="auto"  #cityFrom name="cityFrom">
+                    [matAutocomplete]="auto"  #cityFrom name="cityFrom"  >
                   <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                       {{option.title }}
@@ -17,13 +17,14 @@
                 </mat-form-field>
                 
                 </div>
-                <button type="button" mat-button class="refreshButton" (click) = "cityFrom.value = ' '" >
+                <button type="button" mat-button class="deleteFrom" (click)="cityFromClear()" >
                   <mat-icon>highlight_off</mat-icon>
               </button> 
 
-          <button type="button" mat-button class="refreshButton" style="margin-left: 100px;">
+          <!-- <button type="button" mat-button class="refreshButton" style="margin-left: 100px;">
               <mat-icon>cached</mat-icon>
-          </button> </mat-grid-tile>
+          </button>  -->
+        </mat-grid-tile>
 
          
 
@@ -31,8 +32,8 @@
          
           <mat-form-field class="example-full-width">
             <input type="text" placeholder="Станция прибытия" aria-label="Number" matInput [formControl]="myControlTo" 
-              [matAutocomplete]="auto" #cityTo name="cityTo">
-            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFnTo">
+              [matAutocomplete]="autoTest" #cityTo name="cityTo" >
+            <mat-autocomplete #autoTest="matAutocomplete" [displayWith]="displayFnTo">
               <mat-option *ngFor="let optionsTo of filteredOptionsTo | async" [value]="optionsTo">
                   {{ optionsTo.title }}
               </mat-option>
@@ -40,24 +41,24 @@
 
             
           </mat-form-field>
-          <button type="button" mat-button class="refreshButton"  (click) = "cityTo.value = null">
+          <button type="button" mat-button class="deleteTo" (click)="cityToClear()" >
             <mat-icon>highlight_off</mat-icon>
         </button> 
         </mat-grid-tile>
         <mat-grid-tile> 
 
             <mat-form-field>
-                <input  matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Выберите Дату" 
-                (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"
+                <input  matInput readonly [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Выберите Дату" 
+                (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)" 
                 formControlName="date">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+                <mat-datepicker #picker ></mat-datepicker>
               </mat-form-field>
             
 
 
 
-          <button mat-flat-button color="accent" class="ShowButton" (click)="showFlight()"  style="margin-left:20px;" > Показать</button>
+          <button mat-flat-button color="accent" class="ShowButton"   style="margin-left:20px;" > Показать</button>
           <!-- <button mat-flat-button color="warn" class="checkButton" style="margin-left:20px;" type="submit"> Check </button> -->
           <!-- <a mat-raised-button routerLink="/seats/2/111/114" style="margin-left: 20px;" > seats 2</a> -->
         </mat-grid-tile>
@@ -68,3 +69,4 @@
   
 
     <app-bus-flight *ngIf="show" [responseStations]="responseStationsObj"> </app-bus-flight>
+    <!-- <h1 *ngIf="showErr"> Маршрут не найден </h1> -->

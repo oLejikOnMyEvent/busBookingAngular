@@ -29,7 +29,7 @@ payed: false;
   payPending(item){
       this.PendingBookingService.payPending(item)
       .subscribe(
-        res=> console.log(res),
+        res => console.log(res),
         err => console.log(err),  
       )
       alert(`Вы Заплатили за билет`)
@@ -43,9 +43,11 @@ payed: false;
               res => console.log(res),
               err => console.log(err)
             )
-         
+       
       alert(`Вы отменили бронь`)
+      this.ngOnInit()
       }
+      
  
 
 }
