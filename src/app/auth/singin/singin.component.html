@@ -20,35 +20,70 @@
 </form > -->
 
 
-<div style="display: flex; justify-content: center;" >
+  <!-- <mat-card style="display: flex; justify-content: center;margin-right: 35%; margin-left: 35%;" >
   <div>
-        <p> User Name :  </p>
+        <p> Логин Пользователя :  </p>
   <input type="text" [(ngModel)]="username">
-      <div>
-        <button mat-raised-button color="primary" style="margin-left: 10px" (click)="checkLogin()"> login </button>
-        <div>
-        <a href="http://localhost:4200/auth" class="btn btn-info" style="margin-left: 10px">admin login</a>
-      </div>
+
+      <div style="margin-top:20px;">
+        <button mat-raised-button color="primary"  (click)="checkLogin()" style="margin-right:10px;"> Войти </button>
+        
+        <a href="http://localhost:4200/auth" class="btn btn-info" style="margin-left: 10px">Администратор</a>
+    
+        <a   mat-raised-button routerLink="/buyticket-list" style="margin-left:0px;" > Отмена </a>
       </div>
 
 </div>
 
-<div>
-<p> Password : </p>
-   <input type="password"[(ngModel)]="password">
-    <div>
 
+<div style="margin-left:10px;">
+<p> Пароль : </p>
+   <input type="password" [(ngModel)]="password" >
 
-
-   </div>
   </div>
 
-  <div>
- 
 
-</div>
-</div>
+
+ 
+</mat-card> -->
   
+
+
+<mat-card style="display: flex; justify-content: center;margin-right: 35%; margin-left: 35%; margin-top:2%" > 
+    <form class="example-form "> 
+     
+        <div > 
+        <!-- <input type="text"       style="width: 150px;">  -->
+    
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Логин" id="username" [(ngModel)]="username" name="username">
+          </mat-form-field>
+        <!-- <span class="form-help-text" *ngIf="form.get('userName').invalid && form.get('UserName').touched"> 
+    
+         userName не может быть пустым
+    
+        </span> -->
+      
+      </div>
+    
+    
+    
+      <div style="margin-top:20px">
+        <!-- <input type="text"    style="width: 150px;"> -->
+    
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Пароль"  type="password" id="password" [(ngModel)]="password" name="password" >
+          </mat-form-field>
+       </div>
+  
+       <button mat-raised-button color="primary"  (click)="checkLogin()" > Войти </button>
+        
+        <a href="http://localhost:4200/auth" class="btn btn-info">Администратор</a>
+    
+        <a   mat-raised-button routerLink="/buyticket-list" style="margin-left:0px;" > Отмена </a>
+      
+    </form>
+    </mat-card>
 
   <!-- <div>
   <mat-form-field class="example-full-width">
