@@ -1,0 +1,22 @@
+table {
+    width: 100%;
+  }
+
+.card-body{
+  background-color: #cdeeff;
+}
+
+
+.table_History{
+  background-color: #cdeeff;
+}
+
+
+.tripPendingTitle{
+    background-color: #cdeeff;
+    display: block;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
