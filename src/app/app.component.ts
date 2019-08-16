@@ -17,13 +17,13 @@ import { AuthService } from './auth/auth.service';
 export class AppComponent implements OnInit {
    
     constructor( private BusSearchService : BusSearchService,
-      private loginService: AuthService){}
+      public loginService: AuthService){
+      }
 
-
+      
     ngOnInit(){
         
-
-    
+ 
     }
 
     

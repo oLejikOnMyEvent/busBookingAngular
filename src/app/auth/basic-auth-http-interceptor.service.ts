@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 export class BasicAuthHttpInterceptorService implements HttpInterceptor {
 
 
-  constructor() {}
+  constructor(private loginService : AuthService ) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler){
 

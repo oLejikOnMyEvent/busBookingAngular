@@ -27,7 +27,7 @@ export class AuthService {
 
   }
 
-  authDate: any;
+  // authDate: any;
 
 
 
@@ -45,7 +45,7 @@ export class AuthService {
 
     // console.log(this.http.get<User>('http://localhost:4200/secured', { headers }));
 
-    return this.authDate = this.http.get<User>('http://localhost:4200/stations', { headers})
+    return this.http.get<User>('http://localhost:4200/stations', { headers})
       .pipe(
         map(userData => {
           sessionStorage.setItem('username', username1);

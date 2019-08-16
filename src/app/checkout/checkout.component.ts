@@ -26,14 +26,14 @@ export class CheckoutComponent implements OnInit {
   // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'seat'];
   // dataSource = ELEMENT_DATA;
 
-  private bookingid: number
- private id: number;
- private cityFrom: string;
- private cityTo: string;
- private dateArrival: string;
- private  dateDeparture :string;
- private price: number;
- private  seat: number;
+   bookingid: number
+  id: number;
+  cityFrom: string;
+  cityTo: string;
+  dateArrival: string;
+   dateDeparture :string;
+  price: number;
+   seat: number;
  //private bool: boolean;
   // private subscription: Subscription;
   // private cityFrom: Subscription;

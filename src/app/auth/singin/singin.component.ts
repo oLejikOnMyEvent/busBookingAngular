@@ -34,7 +34,7 @@ export class SinginComponent implements OnInit {
 
 
   constructor(private router: Router,
-    private loginservice: AuthService
+    private loginService: AuthService
   ) { }
 
   ngOnInit() {
@@ -44,7 +44,7 @@ export class SinginComponent implements OnInit {
         
 
   checkLogin() {
-    (this.loginservice.auth(this.username, this.password)
+    (this.loginService.auth(this.username, this.password)
     .subscribe(
         data => {
           this.router.navigate(['buyticket-list'])
