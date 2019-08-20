@@ -35,12 +35,12 @@ export class BuyTicketListService {
 
 
   checkFlights(cityFrom, cityTo, date) {
-    return this.http.get(`http://localhost:4200/schedule?start=${cityFrom}&finish=${cityTo}&Date=${date}`)
+    return this.http.get(`http://localhost:8080/schedule?start=${cityFrom}&finish=${cityTo}&Date=${date}`)
   }
 
 
   checkSeats(cityFrom, cityTo) {
-    return this.http.get(`http://localhost:4200/booking?schedStartId=${cityFrom}&schedFinishId=${cityTo}`);
+    return this.http.get(`http://localhost:8080/booking?schedStartId=${cityFrom}&schedFinishId=${cityTo}`);
   }
 
   // getCookie(){
@@ -60,11 +60,11 @@ export class BuyTicketListService {
         date,
         price
       }
-     return this.http.post(`http://localhost:4200/booking/`, body)
+     return this.http.post(`http://localhost:8080/booking/`, body)
   }
 
   checkBusHistory(){
-    return this.http.get('http://localhost:4200/booking/story/')
+    return this.http.get('http://localhost:8080/booking/story/')
    }
 
 }

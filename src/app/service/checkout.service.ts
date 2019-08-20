@@ -9,7 +9,7 @@ export class CheckoutService {
   constructor(private http: HttpClient) { }
 
   deleteTrip(item){
-    return this.http.delete(`http://localhost:4200/booking/cancel/${item}`)
+    return this.http.delete(`http://localhost:8080/booking/cancel/${item}`)
   }
 
   payTrp(item){
@@ -18,6 +18,6 @@ export class CheckoutService {
         paid: true
     }
     // let newObjDAta = JSON.stringify(objData)
-    return this.http.patch(`http://localhost:4200/booking/pay/${item}`, objData)
+    return this.http.patch(`http://localhost:8080/booking/pay/${item}`, objData)
   }
 }

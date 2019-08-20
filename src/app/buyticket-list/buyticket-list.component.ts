@@ -193,7 +193,7 @@ export class BuyticketListComponent implements OnInit {
 
 
         );
-    } else { alert('Ошибка: совпадают название станции отправления и станции прибытия'), this.form.reset() }
+    } else { alert('Ошибка: совпадают название станции отправления и станции прибытия'), this.form.reset(); this.isLoaded = true }
     console.log(`City From ${sendCityFrom}`, `City To ${sendCityTo}`, `Date ${sendDate}`);
 
   }

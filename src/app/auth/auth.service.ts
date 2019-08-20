@@ -43,9 +43,9 @@ export class AuthService {
     // console.log(headers);
 
 
-    // console.log(this.http.get<User>('http://localhost:4200/secured', { headers }));
+    // console.log(this.http.get<User>('http://localhost:8080/secured', { headers }));
 
-    return this.http.get<User>('http://localhost:4200/stations', { headers})
+    return this.http.get<User>('http://localhost:8080/stations', { headers})
       .pipe(
         map(userData => {
           sessionStorage.setItem('username', username1);

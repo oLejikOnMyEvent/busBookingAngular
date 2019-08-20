@@ -11,8 +11,8 @@ import { AuthService } from '../auth.service';
 })
 export class SinginComponent implements OnInit {
 
-  username = "rafa"
-  password = "mendes"
+  username = ""
+  password = ""
   invalidLogin = false;
 
   // User = {

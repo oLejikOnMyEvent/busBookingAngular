@@ -15,6 +15,7 @@ import {NotFoundComponent} from './not-found/not-found.component'
 
 const routes: Routes = [
   { path: 'history-list', component: HistoryListComponent, canActivate: [AuthGuardService] },
+  { path: '', redirectTo: 'buyticket-list', pathMatch: 'full'},
   { path: 'buyticket-list', component: BuyticketListComponent },
   { path: 'signup', component: SingupComponent },
   { path: 'login', component: SinginComponent },

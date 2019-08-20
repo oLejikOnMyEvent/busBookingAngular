@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 export class BusSearchService {
 
 
-  stationUrl = 'http://localhost:4200/stations';
+  stationUrl = 'http://localhost:8080/stations';
   localStationUrl: 'http://localhost:3000/routeFlight';
 
   constructor(private http: HttpClient) { }
