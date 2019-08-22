@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()" [formGroup]='form' >
+<form [formGroup]='form' >
  
     <mat-card class="CardSearch" style="border-radius: 10px;">
   
@@ -58,7 +58,7 @@
 
 
 
-          <button mat-flat-button color="accent" class="ShowButton" style="margin-left:20px;" > Показать</button>
+          <button mat-flat-button color="accent" class="ShowButton" style="margin-left:20px;" [(disabled)]="!this.form.value.myControlTo.id || !form.value.myControl.id || !this.form.value.date" (click)="onSubmit()"> Показать</button>
           <!-- <button mat-flat-button color="warn" class="checkButton" style="margin-left:20px;" type="submit"> Check </button> -->
           <!-- <a mat-raised-button routerLink="/seats/2/111/114" style="margin-left: 20px;" > seats 2</a> -->
        

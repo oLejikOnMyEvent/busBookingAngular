@@ -195,7 +195,7 @@ bookingPaid
           this.bookingIdNext = response,
           this.bookingId =  this.bookingIdNext.id,
         
-          console.log(this.bookingId, this.bookingIdNext)},
+          console.log(response)},
         error => console.log(error)
       )
 

@@ -8,7 +8,7 @@ import { of } from 'rxjs';
 export class RegistrService {
 
 
-  regUrl = "http://localhost:8080/registration";
+  regUrl = "http://192.168.2.220:8080/api/registration";
   constructor(private http: HttpClient) { }
 
   addUser(username: string, fullname: string, password: string) {

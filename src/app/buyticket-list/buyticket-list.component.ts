@@ -161,14 +161,19 @@ export class BuyticketListComponent implements OnInit {
 
   onSubmit() {
     this.isLoaded = false;
-    let sendCityFrom = JSON.stringify(this.form.value.myControl.id);
-    let sendCityTo = JSON.stringify(this.form.value.myControlTo.id);
-    let sendDate = this.form.value.date;
-    sendDate = moment(sendDate).format("YYYY-MM-DD");
 
+    console.log('onSubmit')
+  
 
+// if(this.form.value.myControl.id!= null && this.form.value.myControlTo.id!= null){
+
+ 
+  let sendCityFrom = JSON.stringify(this.form.value.myControl.id);
+  let sendCityTo = JSON.stringify(this.form.value.myControlTo.id);
+  let sendDate = this.form.value.date;
+  sendDate = moment(sendDate).format("YYYY-MM-DD");
     if (sendCityFrom !== sendCityTo) {
-
+        
       this.BuyTicketListService.checkFlights(sendCityFrom, sendCityTo, sendDate)
         .subscribe(
           (response) => {
@@ -193,8 +198,9 @@ export class BuyticketListComponent implements OnInit {
 
 
         );
-    } else { alert('Ошибка: совпадают название станции отправления и станции прибытия'), this.form.reset(); this.isLoaded = true }
+    } else { alert('Ошибка: совпадают название станции отправления и станции прибытия'), this.form.reset(); this.isLoaded = true}
     console.log(`City From ${sendCityFrom}`, `City To ${sendCityTo}`, `Date ${sendDate}`);
+  // } else { alert('Ошибка: вы не ввели название станций'), this.form.reset(); this.isLoaded = true}
 
   }
 

@@ -9,7 +9,7 @@ export class PendingBookingService {
   constructor(private http: HttpClient) { }
 
   checkPending(){
-    return this.http.get(`http://localhost:8080/booking/pay`);
+    return this.http.get(`http://192.168.2.220:8080/api/booking/pay`);
   }
 
   payPending(item){
@@ -17,11 +17,11 @@ export class PendingBookingService {
       id: parseInt(item),
       paid: true
   }
-    return this.http.patch(`http://localhost:8080/8080/pay/${item}`, objData)
+    return this.http.patch(`http://192.168.2.220:8080/api/booking/pay/${item}`, objData)
   }
 
   deletePending(item){
-      return this.http.delete(`http://localhost:8080/8080/cancel/${item}`)
+      return this.http.delete(`http://192.168.2.220:8080/api/booking/cancel/${item}`)
     }
   }
 
