@@ -44,7 +44,7 @@ export class AuthService {
 
 
 
-    return this.http.get<User>('http://192.168.2.220:8080/api/stations', { headers})
+    return this.http.get<User>('http://localhost:4200/stations', { headers})
       .pipe(
         map(userData => {
           sessionStorage.setItem('username', username1);

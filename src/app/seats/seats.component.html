@@ -43,7 +43,7 @@
 
 
 
-  <button mat-raised-button color="primary" (click)="showSeats()" style="display: flex; justify-content: center" > Выберите место </button>
+  <!-- <button mat-raised-button color="primary" (click)="showSeats()" style="display: flex; justify-content: center" > Выберите место </button> -->
   <h4> вы выбрали место <i style="margin-left: 5px; color: purple">
     {{ mass }} </i> </h4>
 
@@ -51,7 +51,7 @@
 
 
 
-<mat-card style="display: flex; justify-content: center; margin-right:20%; margin-left:20%;" *ngIf="!showAllSeats" >
+<mat-card style="display: flex; justify-content: center; margin-right:20%; margin-left:20%;" >
 
   <!-- <mat-button-toggle-group name="fontStyle" aria-label="Font Style" >
     <mat-button-toggle value="bold" *ngFor="let n of this.bookedFullSeats[0].numberBooked; let i = index" (click)="numberOfPlace(n.number)" [disabled]="!n.isFree" #seatsToggleButtons class="seatsToggleButtons" >{{n.number}}</mat-button-toggle>
@@ -127,9 +127,9 @@
 
   <!-- <div class="SectoreOneUp" style="margin-left: 550px; margin-right: 550px;"> -->
     <div class="SectoreOneUp">
-    <mat-button-toggle value="bold" *ngFor="let n of allFreeSeats.freeSeats" (click)="numberOfPlace(n)"
+    <button mat-mini-fab color="primary" [disabled]="!showAllSeats" *ngFor="let n of allFreeSeats.freeSeats" (click)="numberOfPlace(n)"
       #seatsToggleButtons class="seatsToggleButtons" (click)="showSeats()" >
-      {{n}}</mat-button-toggle>
+      {{n}}</button>
   </div>
 
 
@@ -142,7 +142,7 @@
 
 <mat-card style="margin-left:100px; margin-right:100px; margin-top:20px;" *ngIf="allFreeSeats && mass">
   
-  <button mat-raised-button color="primary" [disabled]="clicked" (click)="BookingSeat(); clicked = true" > Забронировать </button>
+  <button mat-raised-button color="primary" [disabled]="clicked" (click)="BookingSeat(); clicked = true;" > Забронировать </button>
   <a mat-raised-button [disabled]="clicked!=true" (click)="clicked" [routerLink]="['/checkout', bookingId, allFreeSeats.tripNum, allFreeSeats.stationStart.title, allFreeSeats.stationFinish.title, allFreeSeats.timeArrival , allFreeSeats.timeDeparture , allFreeSeats.price, mass]" >Перейти на страницу оплаты</a>
   <button mat-raised-button color="primary" disabled style="margin-left: 20px;" >Цена за билет {{allFreeSeats.price}} </button>
   <!-- <button mat-raised-button color="primary" disabled style="margin-left: 20px;"   > Свободных мест {{freeNum.length}} </button> -->

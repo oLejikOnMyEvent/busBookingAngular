@@ -35,12 +35,12 @@ export class BuyTicketListService {
 
 
   checkFlights(cityFrom, cityTo, date) {
-    return this.http.get(`http://192.168.2.220:8080/api/schedule?start=${cityFrom}&finish=${cityTo}&Date=${date}`)
+    return this.http.get(`http://localhost:4200/schedule?start=${cityFrom}&finish=${cityTo}&Date=${date}`)
   }
 
 
   checkSeats(cityFrom, cityTo) {
-    return this.http.get(`http://192.168.2.220:8080/api/booking?schedStartId=${cityFrom}&schedFinishId=${cityTo}`);
+    return this.http.get(`http://localhost:4200/booking?schedStartId=${cityFrom}&schedFinishId=${cityTo}`);
   }
 
   // getCookie(){
@@ -48,7 +48,7 @@ export class BuyTicketListService {
   //     username: "rafa",
   //     password: "mendes"
   //   }
-  //   return this.http.get(`http://192.168.2.11:8080/secured`, user )
+  //   return this.http.get(`http://localhost:4200/secured`, user )
   // }
 
   postBookedSeat(seatNumber, tripNumber, stationStart, stationFinish, date, price){
@@ -60,11 +60,11 @@ export class BuyTicketListService {
         date,
         price
       }
-     return this.http.post(`http://192.168.2.220:8080/api/booking/`, body)
+     return this.http.post(`http://localhost:4200/booking/`, body)
   }
 
   checkBusHistory(){
-    return this.http.get('http://192.168.2.220:8080/api/booking/story/')
+    return this.http.get('http://localhost:4200/booking/story/')
    }
 
 }

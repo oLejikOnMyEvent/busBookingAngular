@@ -49,7 +49,7 @@
 
             <mat-form-field>
                 <input  matInput readonly [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Выберите Дату" 
-                (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)" 
+                (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"
                 formControlName="date">
                 <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
                 <mat-datepicker #picker ></mat-datepicker>

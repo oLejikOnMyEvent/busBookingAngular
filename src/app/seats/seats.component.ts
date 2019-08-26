@@ -20,7 +20,7 @@ import * as moment from 'moment';
 export class SeatsComponent implements OnInit {
   seatId: number;
 
-  showAllSeats = true;
+ 
   numberOfSeats;
   // @Input() seats: any;
 
@@ -213,6 +213,8 @@ bookingPaid
   }
   
   clicked = false
+
+   showAllSeats = true;
   showSeats() {
     if (this.showAllSeats) {
       this.showAllSeats = false

@@ -36,7 +36,7 @@
     </mat-grid-list>
 
     <!-- <button mat-raised-button color="primary" ></button> -->
-    <a mat-raised-button  color="primary" [routerLink]="['/seats', station.trip,station.startSchedId,station.finishSchedId]"> Купить за {{station.price}} Рублей</a>
+    <a mat-raised-button *ngIf="station.freeSeatsCount!=0" color="primary" [routerLink]="['/seats', station.trip,station.startSchedId,station.finishSchedId]"> Купить за {{station.price}} Рублей</a>
     <button mat-raised-button color="primary" disabled style="margin-left: 50px;"   >Автобус {{station.bus.title}} Свободных Мест  {{station.freeSeatsCount}}</button>
   
 

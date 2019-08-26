@@ -40,7 +40,8 @@ import { BuyticketListComponent } from './buyticket-list/buyticket-list.componen
 import { BasicAuthHttpInterceptorService} from './auth/basic-auth-http-interceptor.service';
 import { PendingBookingComponent } from './pending-booking/pending-booking.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { PreloaderComponent } from './preloader/preloader.component'
+import { PreloaderComponent } from './preloader/preloader.component';
+import { SortDataPipe } from './bus-history/sort-data.pipe'
 
 
 
@@ -63,7 +64,8 @@ import { PreloaderComponent } from './preloader/preloader.component'
     BuyticketListComponent,
     PendingBookingComponent,
     NotFoundComponent,
-    PreloaderComponent
+    PreloaderComponent,
+    SortDataPipe
 
   ],
   imports: [

@@ -25,15 +25,22 @@ export class BusHistoryComponent implements OnInit {
   isLoaded = false
 
   empty = false;
+  check;
   ngOnInit() {
     this.isLoaded = false
     this.BuyTicketListService.checkBusHistory()
       .subscribe(
         (res) => {
-          
 
-            this.busHistoryList = res
-          
+          let check;
+          this.busHistoryList = res
+
+          this.check =  this.busHistoryList.map(item => item.bookingDate)
+
+   this.check = this.check.sort();
+
+            console.log(this.check);
+            
           this.isLoaded = true;
 
         },
@@ -44,4 +51,18 @@ export class BusHistoryComponent implements OnInit {
     this.username = sessionStorage.getItem('username');
     console.log(this.username);
   }
+
+
+  // sortingBy(filed: any) {
+  //   this.busHistoryList.sort((a: any, b: any) => {
+  //     if (a[filed] < b[filed]) {
+  //       return -1;
+  //     } else if (a[filed] > b[filed]) {
+  //       return 1;
+  //     } else {
+  //       return 0;
+  //     }
+  //   });
+  //   this.busHistoryList = this.busHistoryList;
+  // }
 }

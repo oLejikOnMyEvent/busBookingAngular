@@ -12,7 +12,7 @@ export class ScheduleService {
   constructor(private http: HttpClient) { }
 
   localUrlScheldue = 'http://localhost:3000/Schedule';
-  baseUrl = 'http://192.168.2.11:8080/schedule';
+  baseUrl = 'http://localhost:4200/schedule';
 
 
     getScheldue(){
