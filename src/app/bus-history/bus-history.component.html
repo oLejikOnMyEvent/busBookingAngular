@@ -87,7 +87,7 @@
                                 </thead>
 
                                
-                                <tbody  *ngFor="let userHistory of busHistoryList">
+                                <tbody  *ngFor="let userHistory of busHistoryList; let i=index">
                                     <tr>
                                         
                                         <!-- <td>
@@ -117,10 +117,11 @@
                                                 </td>
                                                 <td>
                                              
-                                                    {{userHistory.bookingDate | date }}
-                                                    {{userHistory.bookingDate | date:'hh:mm'}}
+                                                    <!-- {{userHistory.bookingDate | date }}
+                                                    {{userHistory.bookingDate | date:'hh:mm'}} -->
                                                     <!-- {{userHistory.bookingDate}} -->
-                                            
+                                                    {{check[i] | date}}
+                                                    {{check[i] | date:'hh:mm'}}
                                                   </td>
                                                
                           

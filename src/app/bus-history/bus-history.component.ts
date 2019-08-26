@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BuyTicketListService } from '../buyticket-list/buy-ticket-list.service'
 import { empty } from 'rxjs';
-
+import {SortDataPipe} from './sort-data.pipe'
 
 
 
